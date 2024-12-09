@@ -1,6 +1,21 @@
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast.error("Error signing out");
+    } else {
+      toast.success("Signed out successfully");
+      navigate("/auth");
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -10,9 +25,15 @@ const Header = () => {
           <a href="#about" className="text-sm hover:text-primary transition-colors">About</a>
           <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
         </nav>
-        <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
-          Get Started
-        </Button>
+        <div className="flex items-center gap-4">
+          <Button 
+            variant="outline"
+            onClick={handleSignOut}
+            className="text-sm"
+          >
+            Sign Out
+          </Button>
+        </div>
       </div>
     </header>
   );
