@@ -46,9 +46,14 @@ export default function Index() {
       // Only save if there's actual content
       if (Object.values(value).some(v => v?.trim())) {
         try {
+          const { scripture, observation, application, prayer, title } = value;
           await supabase.from("soap_entries").upsert({
             user_id: session.user.id,
-            ...value,
+            scripture: scripture || "",  // Ensure non-null values
+            observation: observation || "",
+            application: application || "",
+            prayer: prayer || "",
+            title: title || "",
             date: new Date().toISOString(),
           });
         } catch (error) {
@@ -76,23 +81,6 @@ export default function Index() {
       
       <Form {...form}>
         <form className="space-y-6">
-          <FormField
-            control={form.control}
-            name="title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder="Enter a title for your entry (optional)" 
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           <FormField
             control={form.control}
             name="scripture"
@@ -158,6 +146,23 @@ export default function Index() {
                     placeholder="Write your prayer response"
                     className="min-h-[150px]"
                     {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="Give your entry a meaningful title based on your reflection" 
+                    {...field} 
                   />
                 </FormControl>
                 <FormMessage />
