@@ -33,6 +33,45 @@ export type Database = {
         }
         Relationships: []
       }
+      soap_entries: {
+        Row: {
+          application: string
+          created_at: string
+          date: string
+          id: string
+          observation: string
+          prayer: string
+          scripture: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          application: string
+          created_at?: string
+          date?: string
+          id?: string
+          observation: string
+          prayer: string
+          scripture: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          application?: string
+          created_at?: string
+          date?: string
+          id?: string
+          observation?: string
+          prayer?: string
+          scripture?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

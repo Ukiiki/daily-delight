@@ -1,61 +1,171 @@
-import { Rocket, Zap, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
-import FeatureCard from "@/components/FeatureCard";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/components/AuthProvider";
+import { supabase } from "@/integrations/supabase/client";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen">
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-            Build Something <span className="gradient-text">Amazing</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-up">
-            Start your project with our beautiful, responsive, and customizable template.
-            Perfect for modern web applications.
-          </p>
-          <div className="flex gap-4 justify-center animate-fade-up">
-            <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity px-8 py-6">
-              Get Started
-            </Button>
-            <Button variant="outline" className="px-8 py-6">
-              Learn More
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Powerful Features
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={Rocket}
-              title="Lightning Fast"
-              description="Built with performance in mind to ensure your application loads quickly."
-            />
-            <FeatureCard
-              icon={Shield}
-              title="Secure by Default"
-              description="Enterprise-grade security features to keep your data safe."
-            />
-            <FeatureCard
-              icon={Zap}
-              title="Easy to Use"
-              description="Intuitive interface and components that just work out of the box."
-            />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+type SoapFormValues = {
+  title: string;
+  scripture: string;
+  observation: string;
+  application: string;
+  prayer: string;
 };
 
-export default Index;
+export default function Index() {
+  const { session } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const form = useForm<SoapFormValues>({
+    defaultValues: {
+      title: "",
+      scripture: "",
+      observation: "",
+      application: "",
+      prayer: "",
+    },
+  });
+
+  // Auto-save functionality
+  useEffect(() => {
+    const subscription = form.watch(async (value) => {
+      if (!session?.user) return;
+      
+      // Only save if there's actual content
+      if (Object.values(value).some(v => v?.trim())) {
+        try {
+          await supabase.from("soap_entries").upsert({
+            user_id: session.user.id,
+            ...value,
+            date: new Date().toISOString(),
+          });
+        } catch (error) {
+          console.error("Error saving entry:", error);
+          toast({
+            title: "Error saving entry",
+            description: "Your entry could not be saved. Please try again.",
+            variant: "destructive",
+          });
+        }
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [form.watch, session?.user, toast]);
+
+  if (!session) {
+    navigate("/auth");
+    return null;
+  }
+
+  return (
+    <div className="container max-w-4xl py-8 space-y-8">
+      <h1 className="text-4xl font-bold gradient-text">SOAP Journal Entry</h1>
+      
+      <Form {...form}>
+        <form className="space-y-6">
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="Enter a title for your entry (optional)" 
+                    {...field} 
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="scripture"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Scripture</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Enter the Bible passage you're studying"
+                    className="min-h-[100px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="observation"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Observation</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="What does this passage say? What do you notice?"
+                    className="min-h-[150px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="application"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Application</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="How can you apply this passage to your life?"
+                    className="min-h-[150px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="prayer"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Prayer</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Write your prayer response"
+                    className="min-h-[150px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
+    </div>
+  );
+}
