@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { BookOpen, Eye, PenBox, Heart } from 'lucide-react';
 import { JournalHeader } from './journal/JournalHeader';
 import { JournalSection } from './journal/JournalSection';
-import { TitleSection } from './journal/TitleSection';
 import debounce from 'lodash/debounce';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,7 @@ export default function SOAPJournalEntry() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    title: '',
+    title: 'New Journal Entry',
     scripture: '',
     observation: '',
     application: '',
@@ -43,7 +42,7 @@ export default function SOAPJournalEntry() {
         .from('soap_entries')
         .insert({
           user_id: user.id,
-          title: formData.title || 'Untitled Entry',
+          title: formData.title,
           scripture: formData.scripture,
           observation: formData.observation,
           application: formData.application,
@@ -57,7 +56,6 @@ export default function SOAPJournalEntry() {
         description: "Your journal entry has been saved successfully."
       });
 
-      // Navigate to a new route (we'll create this next)
       navigate('/entries');
       
     } catch (error) {
@@ -71,7 +69,6 @@ export default function SOAPJournalEntry() {
     }
   };
 
-  // Debounced visual feedback
   const showSaveMessage = useCallback(
     debounce(() => {
       setIsSaving(true);
