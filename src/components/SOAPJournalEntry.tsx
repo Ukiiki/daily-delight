@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { BookOpen, Eye, PenBox, Heart } from 'lucide-react';
 import { JournalHeader } from './journal/JournalHeader';
 import { JournalSection } from './journal/JournalSection';
 import { TitleSection } from './journal/TitleSection';
+import debounce from 'lodash/debounce';
 
 export default function SOAPJournalEntry() {
   const [formData, setFormData] = useState({
@@ -15,20 +16,28 @@ export default function SOAPJournalEntry() {
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
+  // Debounced visual feedback
+  const showSaveMessage = useCallback(
+    debounce(() => {
+      setIsSaving(true);
+      setSaveMessage('Saving...');
+      setTimeout(() => {
+        setIsSaving(false);
+        setSaveMessage('Entry saved');
+        setTimeout(() => setSaveMessage(''), 1000);
+      }, 500);
+    }, 1000),
+    []
+  );
+
   const handleFieldChange = (field: string) => (value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
 
-    // Simulate auto-save
-    setIsSaving(true);
-    setSaveMessage('Saving...');
-    setTimeout(() => {
-      setIsSaving(false);
-      setSaveMessage('Entry saved');
-      setTimeout(() => setSaveMessage(''), 2000);
-    }, 1000);
+    // Show visual feedback with debounce
+    showSaveMessage();
   };
 
   return (

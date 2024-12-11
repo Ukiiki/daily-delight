@@ -17,7 +17,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   isSaving
 }) => (
   <div className="space-y-6">
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground">Daily Delight</h1>
+    <h1 className="text-2xl font-semibold text-center text-foreground">Daily Delight</h1>
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
@@ -26,12 +26,14 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
         onChange={(e) => onTitleChange(e.target.value)}
       />
       {saveMessage && (
-        <Alert className="w-auto">
-          <AlertDescription className="flex items-center gap-2">
-            {isSaving && <SaveAll className="w-4 h-4 animate-spin" />}
-            {saveMessage}
-          </AlertDescription>
-        </Alert>
+        <div className="fixed top-4 right-4 z-50 transition-opacity duration-300">
+          <Alert className="bg-secondary/10 border-none shadow-sm">
+            <AlertDescription className="flex items-center gap-2 text-sm text-secondary">
+              {isSaving && <SaveAll className="w-4 h-4 animate-spin" />}
+              {saveMessage}
+            </AlertDescription>
+          </Alert>
+        </div>
       )}
     </div>
   </div>
