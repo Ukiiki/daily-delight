@@ -21,7 +21,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
 }) => (
   <div className="space-y-6">
     <div className="flex justify-between items-center">
-      <h1 className="text-3xl font-bold text-foreground">Daily Delight</h1>
+      <h1 className="text-3xl font-bold text-foreground">New Journal Entry</h1>
       <Button 
         onClick={onSave}
         disabled={isSaving}
