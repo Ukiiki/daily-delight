@@ -21,7 +21,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
-        className="w-full max-w-2xl text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
+        className="w-full max-w-2xl text-3xl font-bold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
         value={title}
         onChange={(e) => onTitleChange(e.target.value.slice(0, 100))}
         maxLength={100}
