@@ -2,22 +2,35 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SaveAll } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface JournalHeaderProps {
   title: string;
   onTitleChange: (value: string) => void;
   saveMessage: string;
   isSaving: boolean;
+  onSave: () => void;
 }
 
 export const JournalHeader: React.FC<JournalHeaderProps> = ({
   title,
   onTitleChange,
   saveMessage,
-  isSaving
+  isSaving,
+  onSave
 }) => (
   <div className="space-y-6">
-    <h1 className="text-3xl font-bold text-center text-foreground">Daily Delight</h1>
+    <div className="flex justify-between items-center">
+      <h1 className="text-3xl font-bold text-foreground">Daily Delight</h1>
+      <Button 
+        onClick={onSave}
+        disabled={isSaving}
+        className="gap-2"
+      >
+        <SaveAll className="w-4 h-4" />
+        Save Entry
+      </Button>
+    </div>
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
