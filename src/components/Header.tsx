@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { ThemeSelector } from "./ThemeSelector";
+import { useTheme } from "./ThemeProvider";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { theme, setTheme } = useTheme();
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -26,6 +29,10 @@ const Header = () => {
           <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
         </nav>
         <div className="flex items-center gap-4">
+          <ThemeSelector
+            currentTheme={theme.name}
+            onThemeSelect={setTheme}
+          />
           <Button 
             variant="outline"
             onClick={handleSignOut}

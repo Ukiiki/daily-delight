@@ -49,48 +49,94 @@ export const themes: Theme[] = [
     },
   },
   {
-    name: "purple",
-    label: "Purple",
+    name: "cream",
+    label: "Cream",
     colors: {
       primary: {
-        DEFAULT: "#9b87f5",
+        DEFAULT: "#8B5E3C",
         foreground: "#FFFFFF",
       },
       secondary: {
-        DEFAULT: "#7E69AB",
+        DEFAULT: "#A17A5C",
         foreground: "#FFFFFF",
       },
-      background: "#E5DEFF",
+      background: "#FDE1D3",
       muted: {
-        DEFAULT: "#D6BCFA",
-        foreground: "#1A1F2C",
+        DEFAULT: "#F5D6C6",
+        foreground: "#4A3828",
       },
       accent: {
-        DEFAULT: "#1A1F2C",
+        DEFAULT: "#6B4832",
         foreground: "#FFFFFF",
       },
     },
   },
   {
-    name: "pastel",
-    label: "Pastel",
+    name: "warm-white",
+    label: "Warm White",
     colors: {
       primary: {
-        DEFAULT: "#8B5CF6",
+        DEFAULT: "#4A5568",
         foreground: "#FFFFFF",
       },
       secondary: {
-        DEFAULT: "#FEF7CD",
-        foreground: "#1A1F2C",
+        DEFAULT: "#718096",
+        foreground: "#FFFFFF",
       },
       background: "#F1F0FB",
       muted: {
-        DEFAULT: "#FEC6A1",
-        foreground: "#1A1F2C",
+        DEFAULT: "#E2E8F0",
+        foreground: "#2D3748",
       },
       accent: {
-        DEFAULT: "#E5DEFF",
-        foreground: "#1A1F2C",
+        DEFAULT: "#2D3748",
+        foreground: "#FFFFFF",
+      },
+    },
+  },
+  {
+    name: "sepia",
+    label: "Sepia",
+    colors: {
+      primary: {
+        DEFAULT: "#8B4513",
+        foreground: "#FFFFFF",
+      },
+      secondary: {
+        DEFAULT: "#A0522D",
+        foreground: "#FFFFFF",
+      },
+      background: "#F4E4BC",
+      muted: {
+        DEFAULT: "#E8D5AA",
+        foreground: "#704214",
+      },
+      accent: {
+        DEFAULT: "#704214",
+        foreground: "#FFFFFF",
+      },
+    },
+  },
+  {
+    name: "nightfall",
+    label: "Nightfall",
+    colors: {
+      primary: {
+        DEFAULT: "#1A1F2C",
+        foreground: "#FFFFFF",
+      },
+      secondary: {
+        DEFAULT: "#2C3444",
+        foreground: "#FFFFFF",
+      },
+      background: "#0F141E",
+      muted: {
+        DEFAULT: "#1F2937",
+        foreground: "#D1D5DB",
+      },
+      accent: {
+        DEFAULT: "#3B4252",
+        foreground: "#FFFFFF",
       },
     },
   },
