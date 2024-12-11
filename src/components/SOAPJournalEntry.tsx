@@ -34,117 +34,111 @@ export default function SOAPJournalEntry() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4 flex-1">
-          <h1 className="text-4xl font-bold text-primary">Daily Delight</h1>
-          <Input
-            placeholder="Untitled Entry"
-            className="max-w-xs text-lg bg-transparent border-none focus:border-none hover:bg-secondary/10 focus:bg-secondary/10 transition-colors placeholder:text-muted-foreground/50"
-            value={formData.title}
-            onChange={handleChange('title')}
-            aria-label="Quick title"
-          />
-        </div>
+    <div className="max-w-3xl mx-auto p-6 space-y-8">
+      <div className="flex items-center justify-between">
+        <h1 className="text-4xl font-bold">Daily Delight</h1>
+        <Input
+          placeholder="Untitled Entry"
+          className="max-w-xs text-lg bg-transparent border-none focus:border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
+          value={formData.title}
+          onChange={handleChange('title')}
+        />
         {saveMessage && (
           <Alert className="w-auto">
             <AlertDescription className="flex items-center gap-2">
-              {isSaving ? (
-                <SaveAll className="w-4 h-4 animate-spin" />
-              ) : null}
+              {isSaving ? <SaveAll className="w-4 h-4 animate-spin" /> : null}
               {saveMessage}
             </AlertDescription>
           </Alert>
         )}
       </div>
 
-      <Card className="shadow-sm">
-        <CardContent className="pt-6">
-          <div className="space-y-2">
-            <Label className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4" />
-              Scripture
-            </Label>
-            <Textarea
-              placeholder="Enter the Bible passage you're studying"
-              className="min-h-[100px]"
-              value={formData.scripture}
-              onChange={handleChange('scripture')}
-            />
-          </div>
-        </CardContent>
-      </Card>
+      <div className="space-y-6">
+        <Card className="shadow-none border-0 bg-gray-50/50">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <Label className="flex items-center gap-2 text-base font-medium">
+                <BookOpen className="w-5 h-5" />
+                Scripture
+              </Label>
+              <Textarea
+                placeholder="Enter the Bible passage you're studying"
+                className="min-h-[100px] border-0 bg-white resize-none text-gray-600 placeholder:text-gray-400"
+                value={formData.scripture}
+                onChange={handleChange('scripture')}
+              />
+            </div>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-sm">
-        <CardContent className="pt-6">
-          <div className="space-y-2">
-            <Label className="flex items-center gap-2">
-              <Eye className="w-4 h-4" />
-              Observation
-            </Label>
-            <Textarea
-              placeholder="What does this passage say? What do you notice?"
-              className="min-h-[150px]"
-              value={formData.observation}
-              onChange={handleChange('observation')}
-            />
-          </div>
-        </CardContent>
-      </Card>
+        <Card className="shadow-none border-0 bg-gray-50/50">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <Label className="flex items-center gap-2 text-base font-medium">
+                <Eye className="w-5 h-5" />
+                Observation
+              </Label>
+              <Textarea
+                placeholder="What does this passage say? What do you notice?"
+                className="min-h-[150px] border-0 bg-white resize-none text-gray-600 placeholder:text-gray-400"
+                value={formData.observation}
+                onChange={handleChange('observation')}
+              />
+            </div>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-sm">
-        <CardContent className="pt-6">
-          <div className="space-y-2">
-            <Label className="flex items-center gap-2">
-              <PenBox className="w-4 h-4" />
-              Application
-            </Label>
-            <Textarea
-              placeholder="How can you apply this passage to your life?"
-              className="min-h-[150px]"
-              value={formData.application}
-              onChange={handleChange('application')}
-            />
-          </div>
-        </CardContent>
-      </Card>
+        <Card className="shadow-none border-0 bg-gray-50/50">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <Label className="flex items-center gap-2 text-base font-medium">
+                <PenBox className="w-5 h-5" />
+                Application
+              </Label>
+              <Textarea
+                placeholder="How can you apply this passage to your life?"
+                className="min-h-[150px] border-0 bg-white resize-none text-gray-600 placeholder:text-gray-400"
+                value={formData.application}
+                onChange={handleChange('application')}
+              />
+            </div>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-sm">
-        <CardContent className="pt-6">
-          <div className="space-y-2">
-            <Label className="flex items-center gap-2">
-              <Heart className="w-4 h-4" />
-              Prayer
-            </Label>
-            <Textarea
-              placeholder="Write your prayer response"
-              className="min-h-[150px]"
-              value={formData.prayer}
-              onChange={handleChange('prayer')}
-            />
-          </div>
-        </CardContent>
-      </Card>
+        <Card className="shadow-none border-0 bg-gray-50/50">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <Label className="flex items-center gap-2 text-base font-medium">
+                <Heart className="w-5 h-5" />
+                Prayer
+              </Label>
+              <Textarea
+                placeholder="Write your prayer response"
+                className="min-h-[150px] border-0 bg-white resize-none text-gray-600 placeholder:text-gray-400"
+                value={formData.prayer}
+                onChange={handleChange('prayer')}
+              />
+            </div>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-sm">
-        <CardContent className="pt-6">
-          <div className="space-y-2">
-            <Label className="flex items-center gap-2">
-              Title your reflection
-            </Label>
-            <Input
-              placeholder="What theme or insight emerged from your study today?"
-              className="text-lg"
-              value={formData.title}
-              onChange={handleChange('title')}
-              aria-label="Main title input"
-            />
-            <p className="text-sm text-muted-foreground">
-              Take a moment to reflect on your study and give it a meaningful title
-            </p>
-          </div>
-        </CardContent>
-      </Card>
+        <Card className="shadow-none border-0 bg-gray-50/50">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <Label className="flex items-center gap-2 text-base font-medium">
+                <PenBox className="w-5 h-5" />
+                Entry Title
+              </Label>
+              <Input
+                placeholder="Give your entry a meaningful title based on your reflection"
+                className="border-0 bg-white text-gray-600 placeholder:text-gray-400"
+                value={formData.title}
+                onChange={handleChange('title')}
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
