@@ -30,9 +30,14 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
         </Label>
         <Textarea
           placeholder={placeholder}
-          className={`min-h-[${minHeight}] border-0 bg-white resize-none text-gray-600 placeholder:text-gray-400`}
+          className="min-h-[100px] border-0 bg-white text-gray-600 placeholder:text-gray-400 resize-none overflow-hidden"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            e.target.style.height = 'inherit';
+            e.target.style.height = `${e.target.scrollHeight}px`;
+            onChange(e.target.value);
+          }}
+          style={{ height: 'auto', minHeight: minHeight }}
         />
       </div>
     </CardContent>
