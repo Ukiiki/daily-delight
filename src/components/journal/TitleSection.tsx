@@ -13,13 +13,13 @@ export const TitleSection: React.FC<TitleSectionProps> = ({ value, onChange }) =
   <Card className="shadow-none border-0 bg-gray-50/50">
     <CardContent className="pt-6">
       <div className="space-y-3">
-        <Label className="flex items-center gap-2 text-2xl font-semibold">
-          <PenBox className="w-6 h-6" />
+        <Label className="flex items-center gap-2 text-base font-medium">
+          <PenBox className="w-5 h-5" />
           Entry Title
         </Label>
         <Input
           placeholder="Give your entry a meaningful title based on your reflection"
-          className="border-0 bg-white text-xl font-medium placeholder:text-gray-400"
+          className="border-0 bg-white text-gray-600 placeholder:text-gray-400 overflow-x-auto"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

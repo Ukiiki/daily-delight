@@ -17,11 +17,11 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   isSaving
 }) => (
   <div className="space-y-6">
-    <h1 className="text-2xl font-semibold text-center text-foreground">Daily Delight</h1>
+    <h1 className="text-3xl font-bold text-center text-foreground">Daily Delight</h1>
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
-        className="max-w-xs text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
+        className="max-w-2xl text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
         value={title}
         onChange={(e) => onTitleChange(e.target.value)}
       />
