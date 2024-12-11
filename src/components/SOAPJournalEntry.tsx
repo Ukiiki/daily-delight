@@ -42,7 +42,7 @@ export default function SOAPJournalEntry() {
         .from('soap_entries')
         .insert({
           user_id: user.id,
-          title: formData.title,
+          title: formData.title || 'Untitled Entry',
           scripture: formData.scripture,
           observation: formData.observation,
           application: formData.application,
@@ -56,6 +56,7 @@ export default function SOAPJournalEntry() {
         description: "Your journal entry has been saved successfully."
       });
 
+      // Navigate to a new route (we'll create this next)
       navigate('/entries');
       
     } catch (error) {
