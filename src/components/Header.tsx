@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, isAutoTheme, setIsAutoTheme } = useTheme();
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -32,6 +32,8 @@ const Header = () => {
           <ThemeSelector
             currentTheme={theme.name}
             onThemeSelect={setTheme}
+            isAutoTheme={isAutoTheme}
+            onAutoThemeChange={setIsAutoTheme}
           />
           <Button 
             variant="outline"
