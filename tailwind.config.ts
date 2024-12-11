@@ -25,15 +25,23 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "#FAFBFF",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1A1F2C", // Dark Purple from knowledge base
+          DEFAULT: "#2D3648",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#E5DEFF", // Soft Purple from knowledge base
-          foreground: "#1A1F2C",
+          DEFAULT: "#64748B",
+          foreground: "#FFFFFF",
+        },
+        muted: {
+          DEFAULT: "#F1F5F9",
+          foreground: "#334155",
+        },
+        accent: {
+          DEFAULT: "#475569",
+          foreground: "#FFFFFF",
         },
       },
       keyframes: {
