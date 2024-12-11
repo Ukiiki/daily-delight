@@ -21,7 +21,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
-        className="max-w-xs text-lg text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
+        className="max-w-xs text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
         value={title}
         onChange={(e) => onTitleChange(e.target.value)}
       />
