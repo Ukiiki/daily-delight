@@ -1,5 +1,5 @@
 import SOAPJournalEntry from "@/components/SOAPJournalEntry";
 
-export default function Index() {
+export default function NewEntry() {
   return <SOAPJournalEntry />;
 }
