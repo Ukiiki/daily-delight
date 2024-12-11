@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { ThemeSelector } from "./ThemeSelector";
 import { useTheme } from "./ThemeProvider";
+import { Settings } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -35,6 +36,14 @@ const Header = () => {
             isAutoTheme={isAutoTheme}
             onAutoThemeChange={setIsAutoTheme}
           />
+          <Button 
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate("/settings")}
+            className="text-sm"
+          >
+            <Settings className="h-4 w-4" />
+          </Button>
           <Button 
             variant="outline"
             onClick={handleSignOut}

@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NewEntry from "./pages/NewEntry";
 import Auth from "./pages/Auth";
 import Entries from "./pages/Entries";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,14 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <Entries />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
                   </ProtectedRoute>
                 }
               />
