@@ -19,9 +19,10 @@ export const TitleSection: React.FC<TitleSectionProps> = ({ value, onChange }) =
         </Label>
         <Input
           placeholder="Give your entry a meaningful title based on your reflection"
-          className="border-0 bg-white text-gray-600 placeholder:text-gray-400 overflow-x-auto"
+          className="border-0 bg-white text-gray-600 placeholder:text-gray-400 w-full"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value.slice(0, 100))}
+          maxLength={100}
         />
       </div>
     </CardContent>

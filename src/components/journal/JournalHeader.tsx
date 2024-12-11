@@ -21,12 +21,13 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
-        className="max-w-2xl text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
+        className="w-full max-w-2xl text-2xl font-semibold text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
         value={title}
-        onChange={(e) => onTitleChange(e.target.value)}
+        onChange={(e) => onTitleChange(e.target.value.slice(0, 100))}
+        maxLength={100}
       />
       {saveMessage && (
-        <div className="fixed top-4 right-4 z-50 transition-opacity duration-300">
+        <div className="fixed top-4 right-4 z-50">
           <Alert className="bg-secondary/10 border-none shadow-sm">
             <AlertDescription className="flex items-center gap-2 text-sm text-secondary">
               {isSaving && <SaveAll className="w-4 h-4 animate-spin" />}
