@@ -35,9 +35,9 @@ export default function SOAPJournalEntry() {
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-8">
-      <div className="space-y-4">
+      <div className="space-y-6">
         <h1 className="text-4xl font-bold text-center text-primary">Daily Delight</h1>
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <Input
             placeholder="Untitled Entry"
             className="max-w-xs text-lg text-center bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-muted-foreground/50"
