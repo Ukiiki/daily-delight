@@ -28,12 +28,12 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#6366F1",
+          DEFAULT: "#1A1F2C", // Dark Purple from knowledge base
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#8B5CF6",
-          foreground: "#FFFFFF",
+          DEFAULT: "#E5DEFF", // Soft Purple from knowledge base
+          foreground: "#1A1F2C",
         },
       },
       keyframes: {
