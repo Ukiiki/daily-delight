@@ -11,56 +11,66 @@ import Auth from "./pages/Auth";
 import Entries from "./pages/Entries";
 import Settings from "./pages/Settings";
 
-const queryClient = new QueryClient();
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/auth" element={<Auth />} />
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute>
-                    <Entries />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/new"
-                element={
-                  <ProtectedRoute>
-                    <NewEntry />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/entries"
-                element={
-                  <ProtectedRoute>
-                    <Entries />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <ProtectedRoute>
-                    <Settings />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
-      </ThemeProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <ThemeProvider>
+            <AuthProvider>
+              <Toaster />
+              <Sonner />
+              <Routes>
+                <Route path="/auth" element={<Auth />} />
+                <Route
+                  path="/"
+                  element={
+                    <ProtectedRoute>
+                      <Entries />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/new"
+                  element={
+                    <ProtectedRoute>
+                      <NewEntry />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/entries"
+                  element={
+                    <ProtectedRoute>
+                      <Entries />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/settings"
+                  element={
+                    <ProtectedRoute>
+                      <Settings />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </AuthProvider>
+          </ThemeProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
+  );
+}
 
 export default App;
