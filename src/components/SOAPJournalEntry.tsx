@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { BookOpen, Eye, PenBox, Heart } from 'lucide-react';
 import { JournalHeader } from './journal/JournalHeader';
 import { JournalSection } from './journal/JournalSection';
+import { TitleSection } from './journal/TitleSection';
 import debounce from 'lodash/debounce';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +12,7 @@ export default function SOAPJournalEntry() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    title: 'New Journal Entry',
+    title: '',
     scripture: '',
     observation: '',
     application: '',
@@ -70,6 +71,7 @@ export default function SOAPJournalEntry() {
     }
   };
 
+  // Debounced visual feedback
   const showSaveMessage = useCallback(
     debounce(() => {
       setIsSaving(true);
