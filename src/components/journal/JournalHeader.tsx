@@ -23,10 +23,12 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <div className="flex justify-between items-center">
       <Input
         placeholder="New Journal Entry"
-        className="text-4xl font-bold text-foreground bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-foreground max-w-[800px] px-0 h-auto py-3"
+        className="text-3xl font-bold text-foreground bg-transparent border-none hover:bg-secondary/5 focus:bg-secondary/5 transition-colors placeholder:text-foreground max-w-[800px] px-0 h-auto py-3"
         value={title}
         onChange={(e) => onTitleChange(e.target.value.slice(0, 100))}
         maxLength={100}
+        role="heading"
+        aria-level={1}
       />
       <Button 
         onClick={onSave}
