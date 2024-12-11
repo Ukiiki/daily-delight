@@ -17,7 +17,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   isSaving
 }) => (
   <div className="space-y-6">
-    <h1 className="text-5xl font-bold text-center text-foreground">Daily Delight</h1>
+    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground">Daily Delight</h1>
     <div className="flex flex-col items-center gap-4">
       <Input
         placeholder="Untitled Entry"
