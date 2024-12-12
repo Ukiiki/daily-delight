@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 
-interface ThemeProviderProps {
-  children: React.ReactNode;
+interface ThemeContextType {
+  theme: {
+    colors: {
+      primary: {
+        DEFAULT: string;
+      };
+      background: string;
+      foreground: string;
+    };
+  };
 }
 
-export const useTheme = () => {
-  return {
-    theme: {
-      colors: {
-        background: '#ffffff',
-        foreground: '#000000',
-        primary: {
-          DEFAULT: '#000000',
-          foreground: '#ffffff'
-        },
-        secondary: {
-          DEFAULT: '#666666'
-        }
-      }
-    }
-  };
+const defaultTheme = {
+  colors: {
+    primary: {
+      DEFAULT: '#3b82f6',
+    },
+    background: '#ffffff',
+    foreground: '#000000',
+  },
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  return <>{children}</>;
+const ThemeContext = createContext<ThemeContextType>({ theme: defaultTheme });
+
+export const useTheme = () => useContext(ThemeContext);
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  return (
+    <ThemeContext.Provider value={{ theme: defaultTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
