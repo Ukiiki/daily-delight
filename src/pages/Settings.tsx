@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { ThemeSelector } from "@/components/theme/ThemeSelector";
 import { ThemeCustomizer } from "@/components/theme/ThemeCustomizer";
 import { useState } from "react";
+import { ThemeKey } from "@/config/theme/types";
 
 const Settings = () => {
   const { themeKey, setTheme } = useTheme();
@@ -15,9 +16,9 @@ const Settings = () => {
     primary: "#2D3648",
   });
 
-  const handleThemeSelect = (theme: string) => {
+  const handleThemeSelect = (theme: ThemeKey) => {
     setTheme(theme);
-    localStorage.setItem("theme", theme); // Persist theme selection
+    localStorage.setItem("theme", theme);
   };
 
   return (
