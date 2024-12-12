@@ -2,11 +2,11 @@ import React, { useState, useCallback } from 'react';
 import { BookOpen, Eye, PenBox, Heart } from 'lucide-react';
 import { JournalHeader } from './journal/JournalHeader';
 import { JournalSection } from './journal/JournalSection';
-import { TitleSection } from './journal/TitleSection';
 import debounce from 'lodash/debounce';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function SOAPJournalEntry() {
   const navigate = useNavigate();
@@ -57,7 +57,6 @@ export default function SOAPJournalEntry() {
         description: "Your journal entry has been saved successfully."
       });
 
-      // Navigate to a new route (we'll create this next)
       navigate('/entries');
       
     } catch (error) {
@@ -71,7 +70,6 @@ export default function SOAPJournalEntry() {
     }
   };
 
-  // Debounced visual feedback
   const showSaveMessage = useCallback(
     debounce(() => {
       setIsSaving(true);
@@ -103,43 +101,45 @@ export default function SOAPJournalEntry() {
         onSave={saveEntry}
       />
 
-      <div className="space-y-6">
-        <JournalSection
-          label="Scripture"
-          icon={BookOpen}
-          value={formData.scripture}
-          onChange={handleFieldChange('scripture')}
-          placeholder="Enter the Bible passage you're studying"
-          minHeight="100px"
-        />
+      <Card className="p-6 bg-card border-0">
+        <CardContent className="space-y-6 p-0">
+          <JournalSection
+            label="Scripture"
+            icon={BookOpen}
+            value={formData.scripture}
+            onChange={handleFieldChange('scripture')}
+            placeholder="Enter the Bible passage you're studying"
+            minHeight="100px"
+          />
 
-        <JournalSection
-          label="Observation"
-          icon={Eye}
-          value={formData.observation}
-          onChange={handleFieldChange('observation')}
-          placeholder="What does this passage say? What do you notice?"
-          minHeight="150px"
-        />
+          <JournalSection
+            label="Observation"
+            icon={Eye}
+            value={formData.observation}
+            onChange={handleFieldChange('observation')}
+            placeholder="What does this passage say? What do you notice?"
+            minHeight="150px"
+          />
 
-        <JournalSection
-          label="Application"
-          icon={PenBox}
-          value={formData.application}
-          onChange={handleFieldChange('application')}
-          placeholder="How can you apply this passage to your life?"
-          minHeight="150px"
-        />
+          <JournalSection
+            label="Application"
+            icon={PenBox}
+            value={formData.application}
+            onChange={handleFieldChange('application')}
+            placeholder="How can you apply this passage to your life?"
+            minHeight="150px"
+          />
 
-        <JournalSection
-          label="Prayer"
-          icon={Heart}
-          value={formData.prayer}
-          onChange={handleFieldChange('prayer')}
-          placeholder="Write your prayer response"
-          minHeight="150px"
-        />
-      </div>
+          <JournalSection
+            label="Prayer"
+            icon={Heart}
+            value={formData.prayer}
+            onChange={handleFieldChange('prayer')}
+            placeholder="Write your prayer response"
+            minHeight="150px"
+          />
+        </CardContent>
+      </Card>
     </div>
   );
 }
