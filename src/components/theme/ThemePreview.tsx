@@ -13,7 +13,7 @@ interface ThemePreviewProps {
 export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
   return (
     <Card
-      className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[400px]"
+      className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[500px]"
       style={{ backgroundColor: theme.background }}
       onClick={onClick}
     >
@@ -32,12 +32,16 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
               <BookOpen className="w-4 h-4" style={{ color: theme.primary }} />
               <span className="font-medium">Scripture</span>
             </div>
-            <div 
-              className="p-3 rounded-md"
-              style={{ backgroundColor: `${theme.textColor}10` }}
-            >
-              <p className="text-sm opacity-80">John 3:16</p>
-            </div>
+            <Input
+              readOnly
+              value="For God so loved the world..."
+              style={{ 
+                backgroundColor: theme.inputBackground,
+                color: theme.textColor,
+                borderColor: `${theme.textColor}20`
+              }}
+              className="w-full text-sm"
+            />
           </div>
 
           <div className="space-y-2">
@@ -45,14 +49,16 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
               <Eye className="w-4 h-4" style={{ color: theme.primary }} />
               <span className="font-medium">Observation</span>
             </div>
-            <div 
-              className="p-3 rounded-md"
-              style={{ backgroundColor: `${theme.textColor}10` }}
-            >
-              <p className="text-sm opacity-80">
-                God's love for the world is demonstrated through...
-              </p>
-            </div>
+            <Textarea
+              readOnly
+              placeholder="Enter your observations..."
+              style={{ 
+                backgroundColor: theme.inputBackground,
+                color: theme.textColor,
+                borderColor: `${theme.textColor}20`
+              }}
+              className="w-full text-sm min-h-[80px] resize-none"
+            />
           </div>
 
           <div className="space-y-2">
@@ -60,14 +66,16 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
               <PenBox className="w-4 h-4" style={{ color: theme.primary }} />
               <span className="font-medium">Application</span>
             </div>
-            <div 
-              className="p-3 rounded-md"
-              style={{ backgroundColor: `${theme.textColor}10` }}
-            >
-              <p className="text-sm opacity-80">
-                I can share this love by...
-              </p>
-            </div>
+            <Textarea
+              readOnly
+              placeholder="How can you apply this..."
+              style={{ 
+                backgroundColor: theme.inputBackground,
+                color: theme.textColor,
+                borderColor: `${theme.textColor}20`
+              }}
+              className="w-full text-sm min-h-[80px] resize-none"
+            />
           </div>
 
           <div className="space-y-2">
@@ -75,14 +83,16 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
               <Heart className="w-4 h-4" style={{ color: theme.primary }} />
               <span className="font-medium">Prayer</span>
             </div>
-            <div 
-              className="p-3 rounded-md"
-              style={{ backgroundColor: `${theme.textColor}10` }}
-            >
-              <p className="text-sm opacity-80">
-                Dear Lord, help me to...
-              </p>
-            </div>
+            <Textarea
+              readOnly
+              placeholder="Write your prayer..."
+              style={{ 
+                backgroundColor: theme.inputBackground,
+                color: theme.textColor,
+                borderColor: `${theme.textColor}20`
+              }}
+              className="w-full text-sm min-h-[80px] resize-none"
+            />
           </div>
         </div>
       </div>

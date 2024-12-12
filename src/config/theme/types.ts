@@ -3,6 +3,7 @@ export interface Theme {
   background: string;
   textColor: string;
   primary: string;
+  inputBackground: string;
 }
 
 export type ThemeKey = 'classic' | 'cream' | 'warmWhite' | 'sepia' | 'nightfall';
