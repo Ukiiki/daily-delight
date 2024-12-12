@@ -36,23 +36,27 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const newTheme = themes[newThemeKey];
     
     // Set all theme colors
-    root.style.setProperty('--background', newTheme.background);
-    root.style.setProperty('--foreground', newTheme.textColor);
-    root.style.setProperty('--primary', newTheme.primary);
-    root.style.setProperty('--primary-foreground', '#FFFFFF');
-    root.style.setProperty('--secondary', newTheme.primary);
-    root.style.setProperty('--secondary-foreground', '#FFFFFF');
-    root.style.setProperty('--muted', newTheme.background);
-    root.style.setProperty('--muted-foreground', newTheme.textColor + '99');
-    root.style.setProperty('--accent', newTheme.background);
-    root.style.setProperty('--accent-foreground', newTheme.primary);
-    root.style.setProperty('--card-background', newTheme.background);
-    root.style.setProperty('--card-foreground', newTheme.textColor);
-    root.style.setProperty('--popover-background', newTheme.background);
-    root.style.setProperty('--popover-foreground', newTheme.textColor);
-    root.style.setProperty('--border', newTheme.textColor + '20');
-    root.style.setProperty('--input', newTheme.textColor + '20');
-    root.style.setProperty('--ring', newTheme.primary);
+    Object.entries(newTheme.colors).forEach(([key, value]) => {
+      if (typeof value === 'object') {
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          root.style.setProperty(
+            `--${key}${subKey === 'DEFAULT' ? '' : `-${subKey}`}`,
+            subValue
+          );
+        });
+      } else {
+        root.style.setProperty(`--${key}`, value);
+      }
+    });
+
+    // Set additional theme variables
+    root.style.setProperty('--card-background', newTheme.colors.background);
+    root.style.setProperty('--card-foreground', newTheme.colors.primary.DEFAULT);
+    root.style.setProperty('--popover-background', newTheme.colors.background);
+    root.style.setProperty('--popover-foreground', newTheme.colors.primary.DEFAULT);
+    root.style.setProperty('--border', newTheme.colors.primary.DEFAULT + '20');
+    root.style.setProperty('--input', newTheme.colors.primary.DEFAULT + '20');
+    root.style.setProperty('--ring', newTheme.colors.primary.DEFAULT);
   };
 
   // Apply theme on initial load and when theme changes

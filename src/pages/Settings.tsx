@@ -4,9 +4,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import { ThemeSelector } from "@/components/theme/ThemeSelector";
+import { ThemeCustomizer } from "@/components/theme/ThemeCustomizer";
+import { useState } from "react";
 
 const Settings = () => {
   const { themeKey, setTheme } = useTheme();
+  const [customTheme, setCustomTheme] = useState({
+    background: "#FFFFFF",
+    textColor: "#1A1A1A",
+    primary: "#2D3648",
+  });
+
+  const handleThemeSelect = (theme: string) => {
+    setTheme(theme);
+    localStorage.setItem("theme", theme); // Persist theme selection
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -28,17 +40,21 @@ const Settings = () => {
               </p>
               <ThemeSelector
                 currentTheme={themeKey}
-                onThemeSelect={setTheme}
+                onThemeSelect={handleThemeSelect}
               />
             </Card>
           </TabsContent>
 
-          <TabsContent value="customize">
+          <TabsContent value="customize" className="animate-fade-up">
             <Card className="p-6">
-              <h2 className="text-xl font-semibold mb-4">Customize Your Experience</h2>
-              <p className="text-muted-foreground">
-                Additional customization options will be available in future updates.
+              <h2 className="text-xl font-semibold mb-6">Customize Your Theme</h2>
+              <p className="text-muted-foreground mb-8">
+                Create your perfect reading environment by adjusting colors and styles.
               </p>
+              <ThemeCustomizer
+                theme={customTheme}
+                onChange={setCustomTheme}
+              />
             </Card>
           </TabsContent>
         </Tabs>
