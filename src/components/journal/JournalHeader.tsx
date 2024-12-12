@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SaveAll } from 'lucide-react';
@@ -21,35 +21,11 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   onSave
 }) => {
   const { theme } = useTheme();
-  const [appTitle, setAppTitle] = useState("Daily Delight");
-  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        {isEditing ? (
-          <Input
-            value={appTitle}
-            onChange={(e) => setAppTitle(e.target.value)}
-            onBlur={() => setIsEditing(false)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                setIsEditing(false);
-              }
-            }}
-            autoFocus
-            className="text-3xl font-bold w-auto bg-transparent border-none hover:bg-background/50 focus:bg-background/50 transition-colors duration-300"
-            style={{ color: theme.colors.primary.DEFAULT }}
-          />
-        ) : (
-          <h1 
-            onClick={() => setIsEditing(true)}
-            className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity duration-300"
-            style={{ color: theme.colors.primary.DEFAULT }}
-          >
-            {appTitle}
-          </h1>
-        )}
+        <div className="flex-1" /> {/* Spacer */}
         <Button 
           onClick={onSave}
           disabled={isSaving}
