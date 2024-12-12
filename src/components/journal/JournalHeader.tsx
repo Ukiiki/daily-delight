@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SaveAll } from 'lucide-react';
@@ -21,16 +21,17 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   onSave
 }) => {
   const { theme } = useTheme();
+  const [appTitle, setAppTitle] = useState("Daily Delight");
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 
-          className="text-3xl font-bold transition-colors duration-300"
+        <Input
+          value={appTitle}
+          onChange={(e) => setAppTitle(e.target.value)}
+          className="text-3xl font-bold w-auto bg-transparent border-none hover:bg-background/50 focus:bg-background/50 transition-colors duration-300"
           style={{ color: theme.colors.primary.DEFAULT }}
-        >
-          Daily Delight
-        </h1>
+        />
         <Button 
           onClick={onSave}
           disabled={isSaving}
