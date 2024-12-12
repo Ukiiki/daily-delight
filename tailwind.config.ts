@@ -10,19 +10,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        card: "var(--card)",
-        "card-foreground": "var(--card-foreground)",
-        border: "var(--border)",
-        input: "var(--input)",
+        background: "#FFFFFF",
+        foreground: "#1A1F2C",
+        card: "#FFFFFF",
+        "card-foreground": "#1A1F2C",
+        border: "#E5E7EB",
+        input: "#F6F6F7",
         primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
+          DEFAULT: "#1A1F2C",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
+          DEFAULT: "#6E59A5",
+          foreground: "#FFFFFF",
         },
       },
       fontFamily: {

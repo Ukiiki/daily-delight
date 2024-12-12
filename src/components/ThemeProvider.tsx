@@ -24,19 +24,19 @@ interface ThemeContextType {
 const defaultTheme = {
   colors: {
     primary: {
-      DEFAULT: '#1a1a1a',
-      foreground: '#ffffff'
+      DEFAULT: '#1A1F2C',
+      foreground: '#FFFFFF'
     },
     secondary: {
-      DEFAULT: '#6b7280',
-      foreground: '#ffffff'
+      DEFAULT: '#6E59A5',
+      foreground: '#FFFFFF'
     },
-    background: '#ffffff',
-    foreground: '#1a1a1a',
-    card: '#ffffff',
-    cardForeground: '#1a1a1a',
-    border: '#e5e7eb',
-    input: '#f3f4f6',
+    background: '#FFFFFF',
+    foreground: '#1A1F2C',
+    card: '#FFFFFF',
+    cardForeground: '#1A1F2C',
+    border: '#E5E7EB',
+    input: '#F6F6F7',
   },
 };
 

@@ -6,16 +6,16 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #1a1a1a;
-    --card: #ffffff;
-    --card-foreground: #1a1a1a;
-    --border: #e5e7eb;
-    --input: #f3f4f6;
-    --primary: #1a1a1a;
-    --primary-foreground: #ffffff;
-    --secondary: #6b7280;
-    --secondary-foreground: #ffffff;
+    --background: #FFFFFF;
+    --foreground: #1A1F2C;
+    --card: #FFFFFF;
+    --card-foreground: #1A1F2C;
+    --border: #E5E7EB;
+    --input: #F6F6F7;
+    --primary: #1A1F2C;
+    --primary-foreground: #FFFFFF;
+    --secondary: #6E59A5;
+    --secondary-foreground: #FFFFFF;
   }
 
   body {

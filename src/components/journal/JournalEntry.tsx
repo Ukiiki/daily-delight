@@ -90,14 +90,21 @@ export function JournalEntry() {
         onSave={saveEntry}
       />
 
-      <Card className="p-8 bg-white rounded-lg border border-gray-200">
+      <Card 
+        className="p-8 bg-white shadow-sm transition-all duration-300"
+        style={{
+          backgroundColor: theme.colors.background,
+          borderColor: `${theme.colors.primary.DEFAULT}20`,
+          color: theme.colors.foreground,
+        }}
+      >
         <div className="space-y-8">
           <JournalSection
             label="Scripture"
             icon={BookOpen}
             value={formData.scripture}
             onChange={handleFieldChange('scripture')}
-            placeholder="For God so loved the world..."
+            placeholder="Enter the Bible passage you're studying"
             minHeight="100px"
           />
 
@@ -106,7 +113,7 @@ export function JournalEntry() {
             icon={Eye}
             value={formData.observation}
             onChange={handleFieldChange('observation')}
-            placeholder="Enter your observations..."
+            placeholder="What does this passage say? What do you notice?"
             minHeight="150px"
           />
 
@@ -115,7 +122,7 @@ export function JournalEntry() {
             icon={PenBox}
             value={formData.application}
             onChange={handleFieldChange('application')}
-            placeholder="How can you apply this..."
+            placeholder="How can you apply this passage to your life?"
             minHeight="150px"
           />
 
@@ -124,7 +131,7 @@ export function JournalEntry() {
             icon={Heart}
             value={formData.prayer}
             onChange={handleFieldChange('prayer')}
-            placeholder="Write your prayer..."
+            placeholder="Write your prayer response"
             minHeight="150px"
           />
         </div>
