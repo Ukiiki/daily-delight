@@ -22,23 +22,11 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
   minHeight = "100px"
 }) => {
   const { theme } = useTheme();
-  
-  const inputStyle = {
-    backgroundColor: theme.name === "Classic" ? "#ffffff" :
-                    theme.name === "Sepia" ? `${theme.colors.primary.DEFAULT}10` :
-                    theme.name === "Nightfall" ? theme.colors.muted.DEFAULT :
-                    theme.colors.background,
-    border: theme.name === "Classic" ? "1px solid #1a1a1a20" :
-            theme.name === "Sepia" ? `1px solid ${theme.colors.primary.DEFAULT}40` :
-            theme.name === "Nightfall" ? "1px solid #ffffff20" :
-            `1px solid ${theme.colors.foreground}20`,
-    color: theme.colors.foreground,
-  };
 
   return (
     <div className="space-y-3">
       <Label 
-        className="flex items-center gap-2 text-base font-medium"
+        className="flex items-center gap-2 text-base font-medium transition-colors duration-300"
         style={{ color: theme.colors.primary.DEFAULT }}
       >
         <Icon className="w-5 h-5" />
@@ -46,7 +34,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
       </Label>
       <Textarea
         placeholder={placeholder}
-        className="min-h-[100px] resize-none rounded-md p-3"
+        className="min-h-[100px] resize-none rounded-md p-3 transition-colors duration-300"
         value={value}
         onChange={(e) => {
           e.target.style.height = 'inherit';
@@ -54,11 +42,13 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
           onChange(e.target.value);
         }}
         style={{
-          ...inputStyle,
+          backgroundColor: `${theme.colors.primary.DEFAULT}10`,
+          border: `1px solid ${theme.colors.primary.DEFAULT}20`,
+          color: theme.colors.foreground,
           height: 'auto',
           minHeight,
         }}
       />
     </div>
   );
-};
+}

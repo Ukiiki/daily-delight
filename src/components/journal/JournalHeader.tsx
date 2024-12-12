@@ -22,23 +22,11 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
 }) => {
   const { theme } = useTheme();
 
-  const inputStyle = {
-    backgroundColor: theme.name === "Classic" ? "#ffffff" :
-                    theme.name === "Sepia" ? `${theme.colors.primary.DEFAULT}10` :
-                    theme.name === "Nightfall" ? theme.colors.muted.DEFAULT :
-                    theme.colors.background,
-    border: theme.name === "Classic" ? "1px solid #1a1a1a20" :
-            theme.name === "Sepia" ? `1px solid ${theme.colors.primary.DEFAULT}40` :
-            theme.name === "Nightfall" ? "1px solid #ffffff20" :
-            `1px solid ${theme.colors.foreground}20`,
-    color: theme.colors.foreground,
-  };
-
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 
-          className="text-3xl font-bold"
+          className="text-3xl font-bold transition-colors duration-300"
           style={{ color: theme.colors.primary.DEFAULT }}
         >
           Daily Delight
@@ -46,7 +34,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
         <Button 
           onClick={onSave}
           disabled={isSaving}
-          className="gap-2"
+          className="gap-2 transition-colors duration-300"
           style={{
             backgroundColor: theme.colors.primary.DEFAULT,
             color: theme.colors.primary.foreground,
@@ -59,20 +47,30 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
       <div className="flex flex-col items-center gap-4">
         <Input
           placeholder="Untitled Entry"
-          className="w-full max-w-2xl text-3xl font-bold text-center overflow-visible h-auto py-3 rounded-md"
+          className="w-full max-w-2xl text-3xl font-bold text-center overflow-visible h-auto py-3 rounded-md transition-colors duration-300"
           value={title}
           onChange={(e) => onTitleChange(e.target.value.slice(0, 100))}
           maxLength={100}
-          style={inputStyle}
+          style={{
+            backgroundColor: `${theme.colors.primary.DEFAULT}10`,
+            border: `1px solid ${theme.colors.primary.DEFAULT}20`,
+            color: theme.colors.foreground,
+          }}
         />
         {saveMessage && (
           <div className="fixed top-4 right-4 z-50">
-            <Alert className="border-none shadow-sm" style={{
-              backgroundColor: `${theme.colors.primary.DEFAULT}20`,
-            }}>
-              <AlertDescription className="flex items-center gap-2 text-sm" style={{
-                color: theme.colors.primary.DEFAULT,
-              }}>
+            <Alert 
+              className="border-none shadow-sm transition-colors duration-300" 
+              style={{
+                backgroundColor: `${theme.colors.primary.DEFAULT}20`,
+              }}
+            >
+              <AlertDescription 
+                className="flex items-center gap-2 text-sm"
+                style={{
+                  color: theme.colors.primary.DEFAULT,
+                }}
+              >
                 {isSaving && <SaveAll className="w-4 h-4 animate-spin" />}
                 {saveMessage}
               </AlertDescription>

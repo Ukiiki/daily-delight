@@ -80,12 +80,6 @@ export function JournalEntry() {
     showSaveMessage();
   };
 
-  const cardStyle = {
-    backgroundColor: theme.colors.background,
-    border: `2px solid ${theme.colors.primary.DEFAULT}20`,
-    color: theme.colors.foreground,
-  };
-
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       <JournalHeader
@@ -96,7 +90,14 @@ export function JournalEntry() {
         onSave={saveEntry}
       />
 
-      <Card className="p-8 shadow-sm" style={cardStyle}>
+      <Card 
+        className="p-8 shadow-sm transition-colors duration-300"
+        style={{
+          backgroundColor: theme.colors.background,
+          border: `1px solid ${theme.colors.primary.DEFAULT}20`,
+          color: theme.colors.foreground,
+        }}
+      >
         <div className="space-y-8">
           <JournalSection
             label="Scripture"
