@@ -9,9 +9,14 @@ interface ThemeContextType {
       };
       secondary: {
         DEFAULT: string;
+        foreground: string;
       };
       background: string;
       foreground: string;
+      card: string;
+      cardForeground: string;
+      border: string;
+      input: string;
     };
   };
 }
@@ -19,14 +24,19 @@ interface ThemeContextType {
 const defaultTheme = {
   colors: {
     primary: {
-      DEFAULT: '#3b82f6',
+      DEFAULT: '#1a1a1a',
       foreground: '#ffffff'
     },
     secondary: {
-      DEFAULT: '#64748b'
+      DEFAULT: '#6b7280',
+      foreground: '#ffffff'
     },
     background: '#ffffff',
-    foreground: '#000000',
+    foreground: '#1a1a1a',
+    card: '#ffffff',
+    cardForeground: '#1a1a1a',
+    border: '#e5e7eb',
+    input: '#f3f4f6',
   },
 };
 
