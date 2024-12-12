@@ -9,7 +9,7 @@ interface ThemeSelectorProps {
 
 export function ThemeSelector({ currentTheme, onThemeSelect }: ThemeSelectorProps) {
   return (
-    <div className="grid grid-cols-1 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {(Object.entries(themes) as [ThemeKey, typeof themes[ThemeKey]][]).map(([key, theme]) => (
         <ThemePreview
           key={key}

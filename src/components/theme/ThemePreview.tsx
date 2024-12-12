@@ -13,85 +13,85 @@ interface ThemePreviewProps {
 export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
   return (
     <Card
-      className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[500px]"
+      className="p-4 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[300px]"
       style={{ backgroundColor: theme.background }}
       onClick={onClick}
     >
       {isActive && (
-        <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-green-500" />
+        <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-500" />
       )}
       
-      <div className="space-y-6" style={{ color: theme.textColor }}>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">{theme.name}</h3>
+      <div className="space-y-3" style={{ color: theme.textColor }}>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-base font-semibold">{theme.name}</h3>
         </div>
 
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4" style={{ color: theme.primary }} />
-              <span className="font-medium">Scripture</span>
+        <div className="space-y-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1">
+              <BookOpen className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Scripture</span>
             </div>
             <Input
               readOnly
-              value="For God so loved the world..."
+              value="For God so loved..."
               style={{ 
                 backgroundColor: theme.inputBackground,
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-sm"
+              className="w-full text-xs h-7"
             />
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4" style={{ color: theme.primary }} />
-              <span className="font-medium">Observation</span>
+          <div className="space-y-1">
+            <div className="flex items-center gap-1">
+              <Eye className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Observation</span>
             </div>
             <Textarea
               readOnly
-              placeholder="Enter your observations..."
+              placeholder="Enter observations..."
               style={{ 
                 backgroundColor: theme.inputBackground,
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-sm min-h-[80px] resize-none"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <PenBox className="w-4 h-4" style={{ color: theme.primary }} />
-              <span className="font-medium">Application</span>
+          <div className="space-y-1">
+            <div className="flex items-center gap-1">
+              <PenBox className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Application</span>
             </div>
             <Textarea
               readOnly
-              placeholder="How can you apply this..."
+              placeholder="How to apply..."
               style={{ 
                 backgroundColor: theme.inputBackground,
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-sm min-h-[80px] resize-none"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4" style={{ color: theme.primary }} />
-              <span className="font-medium">Prayer</span>
+          <div className="space-y-1">
+            <div className="flex items-center gap-1">
+              <Heart className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Prayer</span>
             </div>
             <Textarea
               readOnly
-              placeholder="Write your prayer..."
+              placeholder="Write prayer..."
               style={{ 
                 backgroundColor: theme.inputBackground,
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-sm min-h-[80px] resize-none"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
         </div>
