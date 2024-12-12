@@ -35,26 +35,27 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     const newTheme = themes[newThemeKey];
     
-    // Set main theme colors
+    // Set all theme colors
     root.style.setProperty('--background', newTheme.background);
     root.style.setProperty('--foreground', newTheme.textColor);
     root.style.setProperty('--primary', newTheme.primary);
-    
-    // Set derived colors for UI components
+    root.style.setProperty('--primary-foreground', '#FFFFFF');
+    root.style.setProperty('--secondary', newTheme.primary);
+    root.style.setProperty('--secondary-foreground', '#FFFFFF');
+    root.style.setProperty('--muted', newTheme.background);
+    root.style.setProperty('--muted-foreground', newTheme.textColor + '99');
+    root.style.setProperty('--accent', newTheme.background);
+    root.style.setProperty('--accent-foreground', newTheme.primary);
     root.style.setProperty('--card-background', newTheme.background);
     root.style.setProperty('--card-foreground', newTheme.textColor);
     root.style.setProperty('--popover-background', newTheme.background);
     root.style.setProperty('--popover-foreground', newTheme.textColor);
-    root.style.setProperty('--primary-foreground', '#FFFFFF');
-    root.style.setProperty('--muted-foreground', newTheme.textColor + '99'); // Add transparency
-    root.style.setProperty('--accent-foreground', newTheme.primary);
-    
-    // Update body background and text color directly
-    document.body.style.backgroundColor = newTheme.background;
-    document.body.style.color = newTheme.textColor;
+    root.style.setProperty('--border', newTheme.textColor + '20');
+    root.style.setProperty('--input', newTheme.textColor + '20');
+    root.style.setProperty('--ring', newTheme.primary);
   };
 
-  // Apply theme on initial load
+  // Apply theme on initial load and when theme changes
   useEffect(() => {
     setTheme(themeKey);
   }, [themeKey]);

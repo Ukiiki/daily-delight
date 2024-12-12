@@ -22,26 +22,34 @@ export default {
         sans: ["Inter", "sans-serif"],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "#FAFBFF",
-        foreground: "hsl(var(--foreground))",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#2D3648",
-          foreground: "#FFFFFF",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
         },
         secondary: {
-          DEFAULT: "#64748B",
-          foreground: "#FFFFFF",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
         },
         muted: {
-          DEFAULT: "#F1F5F9",
-          foreground: "#334155",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         accent: {
-          DEFAULT: "#475569",
-          foreground: "#FFFFFF",
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card-background)",
+          foreground: "var(--card-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover-background)",
+          foreground: "var(--popover-foreground)",
         },
       },
       keyframes: {
@@ -58,15 +66,6 @@ export default {
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
-      },
-      transitionProperty: {
-        'colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',
-      },
-      transitionDuration: {
-        '300': '300ms',
-      },
-      transitionTimingFunction: {
-        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },
