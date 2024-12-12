@@ -59,6 +59,15 @@ export default {
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
       },
+      transitionProperty: {
+        'colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',
+      },
+      transitionDuration: {
+        '300': '300ms',
+      },
+      transitionTimingFunction: {
+        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
