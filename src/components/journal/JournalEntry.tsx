@@ -1,17 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import { BookOpen, Eye, PenBox, Heart } from 'lucide-react';
-import { JournalHeader } from './journal/JournalHeader';
-import { JournalSection } from './journal/JournalSection';
+import { JournalHeader } from './JournalHeader';
+import { JournalSection } from './JournalSection';
 import debounce from 'lodash/debounce';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
-import { useToast } from '@/components/ui/use-toast';
+import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { useTheme } from '@/components/ThemeProvider';
 
-export default function SOAPJournalEntry() {
+export function JournalEntry() {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const { theme } = useTheme();
   const [formData, setFormData] = useState({
     title: '',
@@ -33,11 +32,7 @@ export default function SOAPJournalEntry() {
       } = await supabase.auth.getUser();
 
       if (authError || !user) {
-        toast({
-          title: "Authentication required",
-          description: "Please sign in to save your journal entry",
-          variant: "destructive"
-        });
+        toast.error("Please sign in to save your journal entry");
         return;
       }
 
@@ -54,19 +49,11 @@ export default function SOAPJournalEntry() {
 
       if (error) throw error;
 
-      toast({
-        title: "Entry saved!",
-        description: "Your journal entry has been saved successfully."
-      });
-
-      navigate('/entries');
+      toast.success("Entry saved successfully");
+      navigate('/');
       
     } catch (error) {
-      toast({
-        title: "Error saving entry",
-        description: "There was a problem saving your entry. Please try again.",
-        variant: "destructive"
-      });
+      toast.error("Error saving entry. Please try again.");
     } finally {
       setIsSaving(false);
     }
@@ -95,15 +82,12 @@ export default function SOAPJournalEntry() {
 
   const cardStyle = {
     backgroundColor: theme.colors.background,
-    border: theme.name === "Classic" ? "2px solid #1a1a1a20" :
-            theme.name === "Sepia" ? `2px solid ${theme.colors.primary.DEFAULT}40` :
-            theme.name === "Nightfall" ? "2px solid #ffffff20" :
-            `2px solid ${theme.colors.foreground}10`,
+    border: `2px solid ${theme.colors.primary.DEFAULT}20`,
     color: theme.colors.foreground,
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-8">
+    <div className="max-w-3xl mx-auto space-y-8">
       <JournalHeader
         title={formData.title}
         onTitleChange={handleFieldChange('title')}
