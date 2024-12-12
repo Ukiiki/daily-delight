@@ -26,11 +26,19 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased transition-colors duration-300;
+    @apply antialiased transition-colors duration-300;
     font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Add smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  @apply bg-clip-text text-transparent bg-gradient-to-r;
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
 }
