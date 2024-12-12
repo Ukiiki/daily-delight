@@ -32,38 +32,27 @@ function App() {
               <Sonner />
               <Routes>
                 <Route path="/auth" element={<Auth />} />
-                <Route
-                  path="/"
-                  element={
-                    <ProtectedRoute>
-                      <Entries />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/new"
-                  element={
-                    <ProtectedRoute>
-                      <NewEntry />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/entries"
-                  element={
-                    <ProtectedRoute>
-                      <Entries />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/settings"
-                  element={
-                    <ProtectedRoute>
-                      <Settings />
-                    </ProtectedRoute>
-                  }
-                />
+                <Route path="/entries" element={
+                  <ProtectedRoute>
+                    <Entries />
+                  </ProtectedRoute>
+                } />
+                <Route path="/new" element={
+                  <ProtectedRoute>
+                    <NewEntry />
+                  </ProtectedRoute>
+                } />
+                <Route path="/settings" element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                } />
+                {/* Redirect root to entries */}
+                <Route path="/" element={
+                  <ProtectedRoute>
+                    <Entries />
+                  </ProtectedRoute>
+                } />
               </Routes>
             </AuthProvider>
           </ThemeProvider>
