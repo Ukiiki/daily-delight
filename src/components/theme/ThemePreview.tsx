@@ -13,24 +13,24 @@ interface ThemePreviewProps {
 export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
   return (
     <Card
-      className="p-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[200px]"
+      className="p-4 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[300px]"
       style={{ backgroundColor: theme.background }}
       onClick={onClick}
     >
       {isActive && (
-        <div className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-green-500" />
+        <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-500" />
       )}
       
-      <div className="space-y-2" style={{ color: theme.textColor }}>
-        <div className="flex items-center justify-between mb-1">
-          <h3 className="text-sm font-semibold">{theme.name}</h3>
+      <div className="space-y-3" style={{ color: theme.textColor }}>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-base font-semibold">{theme.name}</h3>
         </div>
 
-        <div className="space-y-2">
-          <div className="space-y-0.5">
+        <div className="space-y-3">
+          <div className="space-y-1">
             <div className="flex items-center gap-1">
-              <BookOpen className="w-2.5 h-2.5" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Scripture</span>
+              <BookOpen className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Scripture</span>
             </div>
             <Input
               readOnly
@@ -40,14 +40,14 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-[10px] h-5 px-1"
+              className="w-full text-xs h-7"
             />
           </div>
 
-          <div className="space-y-0.5">
+          <div className="space-y-1">
             <div className="flex items-center gap-1">
-              <Eye className="w-2.5 h-2.5" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Observation</span>
+              <Eye className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Observation</span>
             </div>
             <Textarea
               readOnly
@@ -57,14 +57,14 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-[10px] min-h-[24px] resize-none px-1 py-0.5"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
 
-          <div className="space-y-0.5">
+          <div className="space-y-1">
             <div className="flex items-center gap-1">
-              <PenBox className="w-2.5 h-2.5" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Application</span>
+              <PenBox className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Application</span>
             </div>
             <Textarea
               readOnly
@@ -74,14 +74,14 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-[10px] min-h-[24px] resize-none px-1 py-0.5"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
 
-          <div className="space-y-0.5">
+          <div className="space-y-1">
             <div className="flex items-center gap-1">
-              <Heart className="w-2.5 h-2.5" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Prayer</span>
+              <Heart className="w-3 h-3" style={{ color: theme.primary }} />
+              <span className="text-sm font-medium">Prayer</span>
             </div>
             <Textarea
               readOnly
@@ -91,7 +91,7 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
                 color: theme.textColor,
                 borderColor: `${theme.textColor}20`
               }}
-              className="w-full text-[10px] min-h-[24px] resize-none px-1 py-0.5"
+              className="w-full text-xs min-h-[40px] resize-none"
             />
           </div>
         </div>
