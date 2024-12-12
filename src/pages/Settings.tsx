@@ -40,7 +40,7 @@ const Settings = () => {
                 Select a theme that provides the most comfortable reading experience for your Bible study sessions.
               </p>
               <ThemeSelector
-                currentTheme={themeKey}
+                currentTheme={themeKey as ThemeKey}
                 onThemeSelect={handleThemeSelect}
               />
             </Card>

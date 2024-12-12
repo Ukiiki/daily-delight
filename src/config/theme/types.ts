@@ -26,7 +26,18 @@ export interface Theme {
   };
 }
 
-export type ThemeKey = 'classic' | 'cream' | 'warmWhite' | 'sepia' | 'nightfall';
+export type ThemeKey = 
+  | 'classic' 
+  | 'cream' 
+  | 'warmWhite' 
+  | 'sepia' 
+  | 'nightfall'
+  | 'spring'
+  | 'summer'
+  | 'fall'
+  | 'winter'
+  | 'christmas'
+  | 'easter';
 
 export type ThemeConfig = {
   [key in ThemeKey]: Theme;
