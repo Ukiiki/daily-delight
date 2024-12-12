@@ -7,10 +7,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import { Card } from '@/components/ui/card';
+import { useTheme } from '@/components/ThemeProvider';
 
 export default function SOAPJournalEntry() {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     title: '',
     scripture: '',
@@ -91,6 +93,15 @@ export default function SOAPJournalEntry() {
     showSaveMessage();
   };
 
+  const cardStyle = {
+    backgroundColor: theme.colors.background,
+    border: theme.name === "Classic" ? "2px solid #1a1a1a20" :
+            theme.name === "Sepia" ? `2px solid ${theme.colors.primary.DEFAULT}40` :
+            theme.name === "Nightfall" ? "2px solid #ffffff20" :
+            `2px solid ${theme.colors.foreground}10`,
+    color: theme.colors.foreground,
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-8">
       <JournalHeader
@@ -101,7 +112,7 @@ export default function SOAPJournalEntry() {
         onSave={saveEntry}
       />
 
-      <Card className="p-8 border-none bg-card shadow-sm">
+      <Card className="p-8 shadow-sm" style={cardStyle}>
         <div className="space-y-8">
           <JournalSection
             label="Scripture"
