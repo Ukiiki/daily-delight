@@ -91,10 +91,10 @@ export function JournalEntry() {
       />
 
       <Card 
-        className="p-8 shadow-sm transition-colors duration-300"
+        className="p-8 shadow-sm transition-all duration-300"
         style={{
           backgroundColor: theme.colors.background,
-          border: `1px solid ${theme.colors.primary.DEFAULT}20`,
+          borderColor: `${theme.colors.primary.DEFAULT}20`,
           color: theme.colors.foreground,
         }}
       >

@@ -1,42 +1,43 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { themes, defaultTheme } from "@/config/theme/themes";
-import { Theme, ThemeKey } from "@/config/theme/types";
+import { themes, defaultTheme } from "@/config/themes";
+import { Theme } from "@/config/themes";
 
 type ThemeContextType = {
   theme: Theme;
-  themeKey: ThemeKey;
-  setTheme: (themeKey: ThemeKey) => void;
+  setTheme: (themeName: string) => void;
+  currentTheme: string;
 };
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: defaultTheme,
-  themeKey: 'classic',
+  currentTheme: 'classic',
   setTheme: () => null,
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [themeKey, setThemeKey] = useState<ThemeKey>('classic');
-  const theme = themes[themeKey];
+  const [currentTheme, setCurrentTheme] = useState('classic');
+  const theme = themes.find((t) => t.name === currentTheme) || defaultTheme;
 
-  // Apply theme colors whenever theme changes
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as ThemeKey | null;
-    if (savedTheme && themes[savedTheme]) {
-      setThemeKey(savedTheme);
+    // Load saved theme on initial mount
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme && themes.some(t => t.name === savedTheme)) {
+      setCurrentTheme(savedTheme);
     }
   }, []);
 
-  // Update CSS variables and save theme preference
-  const setTheme = (newThemeKey: ThemeKey) => {
-    setThemeKey(newThemeKey);
-    localStorage.setItem("theme", newThemeKey);
+  const setTheme = (themeName: string) => {
+    setCurrentTheme(themeName);
+    localStorage.setItem("theme", themeName);
     
     // Update CSS variables
     const root = document.documentElement;
-    const newTheme = themes[newThemeKey];
+    const selectedTheme = themes.find((t) => t.name === themeName) || defaultTheme;
     
-    // Set all theme colors
-    Object.entries(newTheme.colors).forEach(([key, value]) => {
+    root.style.setProperty('--background', selectedTheme.colors.background);
+    root.style.setProperty('--foreground', selectedTheme.colors.foreground);
+    
+    Object.entries(selectedTheme.colors).forEach(([key, value]) => {
       if (typeof value === 'object') {
         Object.entries(value).forEach(([subKey, subValue]) => {
           root.style.setProperty(
@@ -49,27 +50,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       }
     });
 
-    // Set additional theme variables
-    root.style.setProperty('--card-background', newTheme.colors.background);
-    root.style.setProperty('--card-foreground', newTheme.colors.foreground);
-    root.style.setProperty('--popover-background', newTheme.colors.background);
-    root.style.setProperty('--popover-foreground', newTheme.colors.foreground);
-    root.style.setProperty('--border', `${newTheme.colors.primary.DEFAULT}20`);
-    root.style.setProperty('--input', `${newTheme.colors.primary.DEFAULT}20`);
-    root.style.setProperty('--ring', newTheme.colors.primary.DEFAULT);
-
     // Update body background and text color
-    document.body.style.backgroundColor = newTheme.colors.background;
-    document.body.style.color = newTheme.colors.foreground;
+    document.body.style.backgroundColor = selectedTheme.colors.background;
+    document.body.style.color = selectedTheme.colors.foreground;
   };
 
-  // Apply theme on initial load and when theme changes
+  // Apply theme whenever it changes
   useEffect(() => {
-    setTheme(themeKey);
-  }, [themeKey]);
+    setTheme(currentTheme);
+  }, [currentTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, themeKey, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, currentTheme }}>
       {children}
     </ThemeContext.Provider>
   );
