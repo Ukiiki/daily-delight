@@ -6,11 +6,13 @@ type ThemeContextType = {
   theme: Theme;
   setTheme: (themeName: string) => void;
   currentTheme: string;
+  themeKey: string;
 };
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: defaultTheme,
   currentTheme: 'classic',
+  themeKey: 'classic',
   setTheme: () => null,
 });
 
@@ -61,7 +63,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [currentTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, currentTheme }}>
+    <ThemeContext.Provider value={{ 
+      theme, 
+      setTheme, 
+      currentTheme, 
+      themeKey: currentTheme 
+    }}>
       {children}
     </ThemeContext.Provider>
   );
