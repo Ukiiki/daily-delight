@@ -21,10 +21,10 @@ const Header = () => {
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b transition-colors"
       style={{
         backgroundColor: `${theme.colors.background}CC`,
-        borderColor: theme.colors.border,
+        borderColor: `${theme.colors.primary.DEFAULT}20`
       }}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -37,31 +37,22 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-8">
           <a 
             href="#features" 
-            className="text-sm transition-colors"
-            style={{ 
-              color: theme.colors.foreground,
-              "&:hover": { color: theme.colors.primary.DEFAULT }
-            }}
+            className="text-sm transition-colors hover:text-primary"
+            style={{ color: theme.colors.foreground }}
           >
             Features
           </a>
           <a 
             href="#about" 
-            className="text-sm transition-colors"
-            style={{ 
-              color: theme.colors.foreground,
-              "&:hover": { color: theme.colors.primary.DEFAULT }
-            }}
+            className="text-sm transition-colors hover:text-primary"
+            style={{ color: theme.colors.foreground }}
           >
             About
           </a>
           <a 
             href="#contact" 
-            className="text-sm transition-colors"
-            style={{ 
-              color: theme.colors.foreground,
-              "&:hover": { color: theme.colors.primary.DEFAULT }
-            }}
+            className="text-sm transition-colors hover:text-primary"
+            style={{ color: theme.colors.foreground }}
           >
             Contact
           </a>
@@ -71,28 +62,18 @@ const Header = () => {
             variant="ghost"
             size="icon"
             onClick={() => navigate("/settings")}
-            className="text-sm"
-            style={{
-              color: theme.colors.foreground,
-              "&:hover": { 
-                backgroundColor: `${theme.colors.primary.DEFAULT}10`,
-                color: theme.colors.primary.DEFAULT
-              }
-            }}
+            className="text-sm hover:bg-primary/10 transition-colors"
+            style={{ color: theme.colors.foreground }}
           >
             <Settings className="h-4 w-4" />
           </Button>
           <Button 
             variant="outline"
             onClick={handleSignOut}
-            className="text-sm"
+            className="text-sm hover:bg-primary/10 transition-colors"
             style={{
-              borderColor: theme.colors.border,
-              color: theme.colors.foreground,
-              "&:hover": { 
-                backgroundColor: `${theme.colors.primary.DEFAULT}10`,
-                color: theme.colors.primary.DEFAULT
-              }
+              borderColor: `${theme.colors.primary.DEFAULT}20`,
+              color: theme.colors.foreground
             }}
           >
             Sign Out
