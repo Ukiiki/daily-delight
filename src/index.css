@@ -6,13 +6,21 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --background: #FAFBFF;
+    --foreground: #1A1A1A;
+    --primary: #2D3648;
+    --card-background: var(--background);
+    --card-foreground: var(--foreground);
+    --popover-background: var(--background);
+    --popover-foreground: var(--foreground);
+    --primary-foreground: #FFFFFF;
+    --muted-foreground: #1A1A1A99;
+    --accent-foreground: var(--primary);
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased transition-colors duration-200;
+    font-family: 'Inter', sans-serif;
   }
 }
 

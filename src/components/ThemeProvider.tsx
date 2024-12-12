@@ -18,6 +18,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [themeKey, setThemeKey] = useState<ThemeKey>('classic');
   const theme = themes[themeKey];
 
+  // Apply theme colors whenever theme changes
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as ThemeKey | null;
     if (savedTheme && themes[savedTheme]) {
@@ -25,6 +26,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Update CSS variables and save theme preference
   const setTheme = (newThemeKey: ThemeKey) => {
     setThemeKey(newThemeKey);
     localStorage.setItem("theme", newThemeKey);
@@ -33,10 +35,29 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     const newTheme = themes[newThemeKey];
     
+    // Set main theme colors
     root.style.setProperty('--background', newTheme.background);
     root.style.setProperty('--foreground', newTheme.textColor);
     root.style.setProperty('--primary', newTheme.primary);
+    
+    // Set derived colors for UI components
+    root.style.setProperty('--card-background', newTheme.background);
+    root.style.setProperty('--card-foreground', newTheme.textColor);
+    root.style.setProperty('--popover-background', newTheme.background);
+    root.style.setProperty('--popover-foreground', newTheme.textColor);
+    root.style.setProperty('--primary-foreground', '#FFFFFF');
+    root.style.setProperty('--muted-foreground', newTheme.textColor + '99'); // Add transparency
+    root.style.setProperty('--accent-foreground', newTheme.primary);
+    
+    // Update body background and text color directly
+    document.body.style.backgroundColor = newTheme.background;
+    document.body.style.color = newTheme.textColor;
   };
+
+  // Apply theme on initial load
+  useEffect(() => {
+    setTheme(themeKey);
+  }, [themeKey]);
 
   return (
     <ThemeContext.Provider value={{ theme, themeKey, setTheme }}>
