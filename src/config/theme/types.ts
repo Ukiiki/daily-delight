@@ -31,7 +31,13 @@ export type ThemeKey =
   | 'cream' 
   | 'warmWhite' 
   | 'sepia' 
-  | 'nightfall';
+  | 'nightfall'
+  | 'spring'
+  | 'summer'
+  | 'fall'
+  | 'winter'
+  | 'christmas'
+  | 'easter';
 
 export type ThemeConfig = {
   [key in ThemeKey]: Theme;
