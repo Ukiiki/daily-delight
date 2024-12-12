@@ -1,6 +1,7 @@
 import { ThemePreview } from "./ThemePreview";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Theme } from "@/config/theme/types";
 
 interface CustomTheme {
   background: string;
@@ -19,6 +20,35 @@ export function ThemeCustomizer({ theme, onChange }: ThemeCustomizerProps) {
       ...theme,
       [key]: e.target.value,
     });
+  };
+
+  // Convert CustomTheme to full Theme type for preview
+  const previewTheme: Theme = {
+    name: "Custom",
+    background: theme.background,
+    textColor: theme.textColor,
+    primary: theme.primary,
+    inputBackground: theme.background,
+    colors: {
+      background: theme.background,
+      foreground: theme.textColor,
+      primary: {
+        DEFAULT: theme.primary,
+        foreground: theme.background,
+      },
+      secondary: {
+        DEFAULT: theme.textColor,
+        foreground: theme.background,
+      },
+      muted: {
+        DEFAULT: `${theme.textColor}10`,
+        foreground: theme.textColor,
+      },
+      accent: {
+        DEFAULT: `${theme.primary}10`,
+        foreground: theme.textColor,
+      },
+    },
   };
 
   return (
@@ -85,13 +115,7 @@ export function ThemeCustomizer({ theme, onChange }: ThemeCustomizerProps) {
       <div>
         <h3 className="text-lg font-semibold mb-4">Preview</h3>
         <ThemePreview
-          theme={{
-            name: "Custom",
-            background: theme.background,
-            textColor: theme.textColor,
-            primary: theme.primary,
-            inputBackground: theme.background,
-          }}
+          theme={previewTheme}
           isActive={false}
           onClick={() => {}}
         />
