@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./components/AuthProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -48,11 +48,7 @@ function App() {
                   </ProtectedRoute>
                 } />
                 {/* Redirect root to entries */}
-                <Route path="/" element={
-                  <ProtectedRoute>
-                    <Entries />
-                  </ProtectedRoute>
-                } />
+                <Route path="/" element={<Navigate to="/entries" replace />} />
               </Routes>
             </AuthProvider>
           </ThemeProvider>
