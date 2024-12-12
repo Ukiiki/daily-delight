@@ -6,7 +6,7 @@ import debounce from 'lodash/debounce';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
 export default function SOAPJournalEntry() {
   const navigate = useNavigate();
@@ -101,8 +101,8 @@ export default function SOAPJournalEntry() {
         onSave={saveEntry}
       />
 
-      <Card className="p-6 bg-card border-0">
-        <CardContent className="space-y-6 p-0">
+      <Card className="p-8 border-none bg-card shadow-sm">
+        <div className="space-y-8">
           <JournalSection
             label="Scripture"
             icon={BookOpen}
@@ -138,7 +138,7 @@ export default function SOAPJournalEntry() {
             placeholder="Write your prayer response"
             minHeight="150px"
           />
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
