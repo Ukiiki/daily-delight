@@ -1,8 +1,6 @@
 import { Theme } from "@/config/theme/types";
 import { Card } from "@/components/ui/card";
-import { BookOpen, Eye, PenBox, Heart } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { BookOpen } from "lucide-react";
 
 interface ThemePreviewProps {
   theme: Theme;
@@ -13,10 +11,15 @@ interface ThemePreviewProps {
 export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
   return (
     <Card
-      className="p-4 cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-h-[200px]"
+      className="cursor-pointer transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
       style={{ 
         backgroundColor: theme.background,
-        border: `1px solid ${theme.textColor}20`
+        border: theme.name === "Classic" ? "2px solid #1a1a1a20" :
+                theme.name === "Sepia" ? `2px solid ${theme.primary}40` :
+                theme.name === "Nightfall" ? "2px solid #ffffff20" :
+                `2px solid ${theme.textColor}10`,
+        borderRadius: "12px",
+        minHeight: "140px",
       }}
       onClick={onClick}
     >
@@ -24,97 +27,26 @@ export function ThemePreview({ theme, isActive, onClick }: ThemePreviewProps) {
         <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-500" />
       )}
       
-      <div className="space-y-2" style={{ color: theme.textColor }}>
-        <div className="flex items-center justify-between mb-1">
-          <h3 className="text-sm font-medium">{theme.name}</h3>
-        </div>
-
-        <div className="space-y-2">
-          <div className="space-y-1">
-            <div className="flex items-center gap-1">
-              <BookOpen className="w-3 h-3" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Scripture</span>
-            </div>
-            <Input
-              readOnly
-              value="For God so loved the world..."
-              style={{ 
-                backgroundColor: theme.inputBackground || theme.background,
-                color: theme.textColor,
-                borderColor: theme.name === "Sepia" ? theme.primary + "80" : `${theme.textColor}20`,
-                borderWidth: "1px",
-                fontSize: "0.75rem",
-                padding: "0.375rem 0.5rem"
-              }}
-              className="w-full h-6 text-xs"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <div className="flex items-center gap-1">
-              <Eye className="w-3 h-3" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Observation</span>
-            </div>
-            <Textarea
-              readOnly
-              placeholder="Enter your observations..."
-              style={{ 
-                backgroundColor: theme.inputBackground || theme.background,
-                color: theme.textColor,
-                borderColor: theme.name === "Sepia" ? theme.primary + "80" : `${theme.textColor}20`,
-                borderWidth: "1px",
-                fontSize: "0.75rem",
-                padding: "0.375rem 0.5rem",
-                minHeight: "1.5rem",
-                height: "1.5rem"
-              }}
-              className="w-full text-xs resize-none"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <div className="flex items-center gap-1">
-              <PenBox className="w-3 h-3" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Application</span>
-            </div>
-            <Textarea
-              readOnly
-              placeholder="How can you apply this..."
-              style={{ 
-                backgroundColor: theme.inputBackground || theme.background,
-                color: theme.textColor,
-                borderColor: theme.name === "Sepia" ? theme.primary + "80" : `${theme.textColor}20`,
-                borderWidth: "1px",
-                fontSize: "0.75rem",
-                padding: "0.375rem 0.5rem",
-                minHeight: "1.5rem",
-                height: "1.5rem"
-              }}
-              className="w-full text-xs resize-none"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <div className="flex items-center gap-1">
-              <Heart className="w-3 h-3" style={{ color: theme.primary }} />
-              <span className="text-xs font-medium">Prayer</span>
-            </div>
-            <Textarea
-              readOnly
-              placeholder="Write your prayer..."
-              style={{ 
-                backgroundColor: theme.inputBackground || theme.background,
-                color: theme.textColor,
-                borderColor: theme.name === "Sepia" ? theme.primary + "80" : `${theme.textColor}20`,
-                borderWidth: "1px",
-                fontSize: "0.75rem",
-                padding: "0.375rem 0.5rem",
-                minHeight: "1.5rem",
-                height: "1.5rem"
-              }}
-              className="w-full text-xs resize-none"
-            />
-          </div>
+      <div 
+        className="flex flex-col items-center justify-center p-4 space-y-2" 
+        style={{ color: theme.textColor }}
+      >
+        <BookOpen 
+          className="w-6 h-6 mb-1" 
+          style={{ color: theme.primary }} 
+        />
+        <h3 className="text-lg font-medium">{theme.name}</h3>
+        <div 
+          className="text-sm mt-1 px-3 py-1.5 rounded-md w-full text-center"
+          style={{ 
+            backgroundColor: theme.inputBackground || theme.background,
+            border: theme.name === "Sepia" ? `1px solid ${theme.primary}80` :
+                    theme.name === "Classic" ? "1px solid #1a1a1a20" :
+                    theme.name === "Nightfall" ? "1px solid #ffffff20" :
+                    `1px solid ${theme.textColor}20`,
+          }}
+        >
+          Sample Text
         </div>
       </div>
     </Card>
