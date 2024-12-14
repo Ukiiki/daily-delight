@@ -19,7 +19,10 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold" style={{ color: theme.colors.primary.DEFAULT }}>
+          Daily Delight
+        </h1>
         <Button 
           onClick={onSave}
           disabled={isSaving}
