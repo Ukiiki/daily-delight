@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { useTheme } from '@/components/ThemeProvider';
-import { Input } from '@/components/ui/input';
 
 export function JournalEntry() {
   const navigate = useNavigate();
@@ -83,13 +82,13 @@ export function JournalEntry() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      <div className="flex justify-end">
-        <JournalHeader
-          saveMessage={saveMessage}
-          isSaving={isSaving}
-          onSave={saveEntry}
-        />
-      </div>
+      <JournalHeader
+        title={formData.title}
+        onTitleChange={handleFieldChange('title')}
+        saveMessage={saveMessage}
+        isSaving={isSaving}
+        onSave={saveEntry}
+      />
 
       <Card 
         className="p-8 bg-white shadow-sm transition-all duration-300"
@@ -135,21 +134,6 @@ export function JournalEntry() {
             placeholder="Write your prayer response"
             minHeight="150px"
           />
-
-          <div className="pt-8 border-t border-gray-200">
-            <Input
-              placeholder="Give your entry a title"
-              className="w-full text-3xl font-bold text-center h-auto py-3 rounded-md transition-colors duration-300"
-              value={formData.title}
-              onChange={(e) => handleFieldChange('title')(e.target.value.slice(0, 100))}
-              maxLength={100}
-              style={{
-                backgroundColor: `${theme.colors.primary.DEFAULT}10`,
-                borderColor: `${theme.colors.primary.DEFAULT}20`,
-                color: theme.colors.foreground,
-              }}
-            />
-          </div>
         </div>
       </Card>
     </div>
