@@ -28,7 +28,7 @@ const defaultTheme = {
       foreground: '#FFFFFF'
     },
     secondary: {
-      DEFAULT: '#6E59A5',
+      DEFAULT: '#9b87f5',
       foreground: '#FFFFFF'
     },
     background: '#FFFFFF',
