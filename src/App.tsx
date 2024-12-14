@@ -22,23 +22,22 @@ const queryClient = new QueryClient({
 // Protected route component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { session } = useAuth();
+  
   if (!session) {
     return <Navigate to="/auth" replace />;
   }
-  return <>{children}</>;
+  return children;
 };
 
 function AppRoutes() {
   const { session } = useAuth();
-  
-  // If we have a session but we're on /auth, redirect to home
-  if (session && window.location.pathname === '/auth') {
-    return <Navigate to="/" replace />;
-  }
 
   return (
     <Routes>
-      <Route path="/auth" element={<Auth />} />
+      <Route 
+        path="/auth" 
+        element={session ? <Navigate to="/" replace /> : <Auth />} 
+      />
       <Route
         path="/"
         element={
@@ -46,6 +45,11 @@ function AppRoutes() {
             <NewEntry />
           </ProtectedRoute>
         }
+      />
+      {/* Catch all route - redirect to auth if not logged in, otherwise to home */}
+      <Route 
+        path="*" 
+        element={session ? <Navigate to="/" replace /> : <Navigate to="/auth" replace />} 
       />
     </Routes>
   );
