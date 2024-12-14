@@ -11,17 +11,17 @@ export default {
     extend: {
       colors: {
         background: "#FFFFFF",
-        foreground: "#1A1F2C",
+        foreground: "#000000",
         card: "#FFFFFF",
-        "card-foreground": "#1A1F2C",
+        "card-foreground": "#000000",
         border: "#E5E7EB",
-        input: "#F6F6F7",
+        input: "#FFFFFF",
         primary: {
-          DEFAULT: "#1A1F2C",
+          DEFAULT: "#000000",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#9b87f5",
+          DEFAULT: "#000000",
           foreground: "#FFFFFF",
         },
       },
