@@ -22,9 +22,9 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center gap-6">
-        <div className="w-full flex justify-center">
+        <div className="w-full text-center">
           <h1 
-            className="text-3xl font-bold text-center max-w-2xl" 
+            className="text-3xl font-bold"
             style={{ color: theme.colors.primary.DEFAULT }}
           >
             {title || 'Daily Delight'}
