@@ -22,12 +22,14 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center gap-6">
-        <h1 
-          className="text-3xl font-bold text-center w-full" 
-          style={{ color: theme.colors.primary.DEFAULT }}
-        >
-          {title || 'Daily Delight'}
-        </h1>
+        <div className="w-full flex justify-center">
+          <h1 
+            className="text-3xl font-bold text-center max-w-2xl" 
+            style={{ color: theme.colors.primary.DEFAULT }}
+          >
+            {title || 'Daily Delight'}
+          </h1>
+        </div>
         <div className="w-full flex justify-end">
           <Button 
             onClick={onSave}
