@@ -14,14 +14,12 @@ export function JournalEntry() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
-      <div className="flex justify-end">
-        <JournalHeader
-          saveMessage={saveMessage}
-          isSaving={isSaving}
-          onSave={saveEntry}
-          title={formData.title}
-        />
-      </div>
+      <JournalHeader
+        saveMessage={saveMessage}
+        isSaving={isSaving}
+        onSave={saveEntry}
+        title={formData.title}
+      />
 
       <JournalForm 
         formData={formData}
