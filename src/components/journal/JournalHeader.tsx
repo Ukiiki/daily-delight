@@ -22,14 +22,6 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center gap-6">
-        <div className="w-full text-center">
-          <h1 
-            className="text-3xl font-bold"
-            style={{ color: theme.colors.primary.DEFAULT }}
-          >
-            {title || 'Daily Delight'}
-          </h1>
-        </div>
         <div className="w-full flex justify-end">
           <Button 
             onClick={onSave}
@@ -43,6 +35,14 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
             <SaveAll className="w-4 h-4" />
             Save Entry
           </Button>
+        </div>
+        <div className="w-full text-center">
+          <h1 
+            className="text-3xl font-bold"
+            style={{ color: theme.colors.primary.DEFAULT }}
+          >
+            {title || 'Daily Delight'}
+          </h1>
         </div>
       </div>
       {saveMessage && (
