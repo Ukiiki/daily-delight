@@ -19,14 +19,7 @@ export const JournalForm: React.FC<JournalFormProps> = ({
   console.log('Theme colors:', theme.colors);
 
   return (
-    <Card 
-      className="p-8 rounded-[24px] border-[1.5px] transition-all duration-300"
-      style={{
-        backgroundColor: theme.colors.card,
-        borderColor: theme.colors.foreground,
-        color: theme.colors.foreground,
-      }}
-    >
+    <Card className="p-8 rounded-[24px] border-[1.5px] transition-all duration-300 bg-card">
       <div className="space-y-8">
         <JournalSection
           label="Scripture"
