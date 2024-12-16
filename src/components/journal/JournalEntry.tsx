@@ -88,6 +88,7 @@ export function JournalEntry() {
           saveMessage={saveMessage}
           isSaving={isSaving}
           onSave={saveEntry}
+          title={formData.title}
         />
       </div>
 

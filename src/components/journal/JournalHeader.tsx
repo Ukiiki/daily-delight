@@ -8,12 +8,14 @@ interface JournalHeaderProps {
   saveMessage: string;
   isSaving: boolean;
   onSave: () => void;
+  title: string;
 }
 
 export const JournalHeader: React.FC<JournalHeaderProps> = ({
   saveMessage,
   isSaving,
-  onSave
+  onSave,
+  title
 }) => {
   const { theme } = useTheme();
 
@@ -21,7 +23,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold" style={{ color: theme.colors.primary.DEFAULT }}>
-          Daily Delight
+          {title || 'Daily Delight'}
         </h1>
         <Button 
           onClick={onSave}
