@@ -1,52 +1,17 @@
 import React, { createContext, useContext, ReactNode } from 'react';
+import { themeColors } from '@/lib/theme';
 
 interface ThemeContextType {
-  theme: {
-    colors: {
-      primary: {
-        DEFAULT: string;
-        foreground: string;
-      };
-      secondary: {
-        DEFAULT: string;
-        foreground: string;
-      };
-      background: string;
-      foreground: string;
-      card: string;
-      cardForeground: string;
-      border: string;
-      input: string;
-    };
-  };
+  theme: typeof themeColors;
 }
 
-const defaultTheme = {
-  colors: {
-    primary: {
-      DEFAULT: '#000000',
-      foreground: '#FFFFFF'
-    },
-    secondary: {
-      DEFAULT: '#000000',
-      foreground: '#FFFFFF'
-    },
-    background: '#FFFFFF',
-    foreground: '#000000',
-    card: '#FFFFFF',
-    cardForeground: '#000000',
-    border: '#E5E7EB',
-    input: '#FFFFFF',
-  },
-};
-
-const ThemeContext = createContext<ThemeContextType>({ theme: defaultTheme });
+const ThemeContext = createContext<ThemeContextType>({ theme: themeColors });
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   return (
-    <ThemeContext.Provider value={{ theme: defaultTheme }}>
+    <ThemeContext.Provider value={{ theme: themeColors }}>
       {children}
     </ThemeContext.Provider>
   );
