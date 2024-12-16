@@ -10,24 +10,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#FFFFFF",
-        foreground: "#000000",
+        background: "#F8F9FA",
+        foreground: "#333333",
         card: "#FFFFFF",
-        "card-foreground": "#000000",
+        "card-foreground": "#333333",
         border: "#E5E7EB",
         input: "#FFFFFF",
         primary: {
-          DEFAULT: "#000000",
+          DEFAULT: "#333333",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#000000",
+          DEFAULT: "#8E9196",
           foreground: "#FFFFFF",
+        },
+        muted: {
+          DEFAULT: "#8A898C",
+          foreground: "#8A898C",
         },
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
+      boxShadow: {
+        'card': '0 2px 4px rgba(0, 0, 0, 0.05)',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

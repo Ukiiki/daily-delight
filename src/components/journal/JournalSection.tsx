@@ -24,17 +24,17 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
   const { theme } = useTheme();
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       <Label 
-        className="flex items-center gap-2 text-base font-medium"
-        style={{ color: theme.colors.primary.DEFAULT }}
+        className="flex items-center gap-2 text-sm font-medium"
+        style={{ color: theme.colors.foreground }}
       >
-        <Icon className="w-5 h-5" />
+        <Icon className="w-4 h-4" />
         {label}
       </Label>
       <Textarea
         placeholder={placeholder}
-        className="min-h-[100px] resize-none rounded-md p-3 w-full transition-colors"
+        className="min-h-[100px] resize-none rounded-lg p-3 w-full transition-colors border-[1.5px]"
         value={value}
         onChange={(e) => {
           e.target.style.height = 'inherit';
@@ -42,8 +42,8 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
           onChange(e.target.value);
         }}
         style={{
-          backgroundColor: `${theme.colors.primary.DEFAULT}10`,
-          borderColor: `${theme.colors.primary.DEFAULT}20`,
+          backgroundColor: theme.colors.card,
+          borderColor: `${theme.colors.primary.DEFAULT}15`,
           color: theme.colors.foreground,
           height: 'auto',
           minHeight,

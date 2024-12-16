@@ -82,7 +82,7 @@ export function JournalEntry() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8">
+    <div className="max-w-3xl mx-auto space-y-6">
       <div className="flex justify-end">
         <JournalHeader
           saveMessage={saveMessage}
@@ -92,14 +92,14 @@ export function JournalEntry() {
       </div>
 
       <Card 
-        className="p-8 bg-white shadow-sm transition-all duration-300"
+        className="p-8 shadow-card rounded-xl transition-all duration-300"
         style={{
-          backgroundColor: theme.colors.background,
-          borderColor: `${theme.colors.primary.DEFAULT}20`,
+          backgroundColor: theme.colors.card,
+          borderColor: `${theme.colors.primary.DEFAULT}15`,
           color: theme.colors.foreground,
         }}
       >
-        <div className="space-y-8">
+        <div className="space-y-6">
           <JournalSection
             label="Scripture"
             icon={BookOpen}
@@ -136,16 +136,16 @@ export function JournalEntry() {
             minHeight="150px"
           />
 
-          <div className="pt-8 border-t border-gray-200">
+          <div className="pt-6 border-t border-gray-100">
             <Input
               placeholder="Give your entry a title"
-              className="w-full text-3xl font-bold text-center h-auto py-3 rounded-md transition-colors duration-300"
+              className="w-full text-2xl font-medium text-center h-auto py-3 rounded-lg transition-colors duration-300"
               value={formData.title}
               onChange={(e) => handleFieldChange('title')(e.target.value.slice(0, 100))}
               maxLength={100}
               style={{
-                backgroundColor: `${theme.colors.primary.DEFAULT}10`,
-                borderColor: `${theme.colors.primary.DEFAULT}20`,
+                backgroundColor: theme.colors.card,
+                borderColor: `${theme.colors.primary.DEFAULT}15`,
                 color: theme.colors.foreground,
               }}
             />
