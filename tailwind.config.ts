@@ -12,7 +12,7 @@ export default {
       colors: {
         background: "#F8F9FA",
         foreground: "#1A1A1A",
-        card: "#FFFFFF",
+        card: "#FAFCFF",
         "card-foreground": "#1A1A1A",
         border: "#E5E7EB",
         input: "#FFFFFF",
