@@ -24,17 +24,17 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
   const { theme } = useTheme();
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       <Label 
-        className="flex items-center gap-2 text-sm font-medium"
+        className="flex items-center gap-2 text-base font-medium"
         style={{ color: theme.colors.foreground }}
       >
-        <Icon className="w-4 h-4" />
+        <Icon className="w-5 h-5" />
         {label}
       </Label>
       <Textarea
         placeholder={placeholder}
-        className="min-h-[100px] resize-none rounded-lg p-3 w-full transition-colors border-[1.5px]"
+        className="min-h-[100px] resize-none rounded-xl p-4 w-full transition-colors border-[1px]"
         value={value}
         onChange={(e) => {
           e.target.style.height = 'inherit';

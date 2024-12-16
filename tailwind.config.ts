@@ -11,13 +11,13 @@ export default {
     extend: {
       colors: {
         background: "#F8F9FA",
-        foreground: "#333333",
+        foreground: "#1A1A1A",
         card: "#FFFFFF",
-        "card-foreground": "#333333",
+        "card-foreground": "#1A1A1A",
         border: "#E5E7EB",
         input: "#FFFFFF",
         primary: {
-          DEFAULT: "#333333",
+          DEFAULT: "#1A1A1A",
           foreground: "#FFFFFF",
         },
         secondary: {
@@ -32,8 +32,9 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
-      boxShadow: {
-        'card': '0 2px 4px rgba(0, 0, 0, 0.05)',
+      borderRadius: {
+        'xl': '1rem',
+        '2xl': '1.5rem',
       }
     },
   },

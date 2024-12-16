@@ -7,12 +7,12 @@
 @layer base {
   :root {
     --background: #F8F9FA;
-    --foreground: #333333;
+    --foreground: #1A1A1A;
     --card: #FFFFFF;
-    --card-foreground: #333333;
+    --card-foreground: #1A1A1A;
     --border: #E5E7EB;
     --input: #FFFFFF;
-    --primary: #333333;
+    --primary: #1A1A1A;
     --primary-foreground: #FFFFFF;
     --secondary: #8E9196;
     --secondary-foreground: #FFFFFF;
