@@ -16,6 +16,7 @@ export const JournalForm: React.FC<JournalFormProps> = ({
   onFieldChange
 }) => {
   const { theme } = useTheme();
+  console.log('Theme colors:', theme.colors);
 
   return (
     <Card 
