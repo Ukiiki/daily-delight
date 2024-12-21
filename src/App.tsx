@@ -21,16 +21,25 @@ const queryClient = new QueryClient({
 
 // Protected route component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { session } = useAuth();
+  const { session, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   
   if (!session) {
     return <Navigate to="/auth" replace />;
   }
+  
   return children;
 };
 
 function AppRoutes() {
-  const { session } = useAuth();
+  const { session, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Routes>
