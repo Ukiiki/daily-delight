@@ -1,42 +1,44 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import { lightTheme } from './src/lib/theme';
 
-export default {
+const config: Config = {
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        card: "var(--card)",
-        "card-foreground": "var(--card-foreground)",
-        border: "var(--border)",
-        input: "var(--input)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
+        primary: lightTheme.colors.primary,
+        secondary: lightTheme.colors.secondary,
+        accent: lightTheme.colors.accent,
+        success: lightTheme.colors.success,
+        warning: lightTheme.colors.warning,
+        danger: lightTheme.colors.danger,
+        background: lightTheme.colors.background,
+        foreground: lightTheme.colors.foreground,
+        border: lightTheme.colors.border,
+        ring: lightTheme.colors.ring,
+        content: lightTheme.colors.content,
       },
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
+      spacing: lightTheme.spacing,
+      fontFamily: lightTheme.typography.fonts,
+      fontSize: lightTheme.typography.sizes,
+      fontWeight: lightTheme.typography.weights,
+      borderRadius: lightTheme.radius,
+      boxShadow: lightTheme.shadows,
+      transitionDuration: {
+        DEFAULT: '150ms',
+        fast: '100ms',
+        slow: '300ms',
       },
-      borderRadius: {
-        'xl': '1rem',
-        '2xl': '1.5rem',
-      }
+      transitionTimingFunction: {
+        DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [],
+} as Config;
+
+export default config;
